@@ -1,0 +1,24 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-10-28 17:54:25
+ * @LastEditTime: 2021-10-28 21:30:22
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /carrblog/themes/carrtheme/layout/aside.ejs
+-->
+<!-- 搜索栏 -->
+<div id="aside">
+    <div class="logo"><%- theme.title %></div>
+    <div class="description"><%- theme.description %></div> 
+    <ul class="menu">
+        <% for(menu in theme.menus) { %>
+            <li class="menu-item">
+                <a href="<%%>" class="menu-item-link"><%- menu %></a>
+            </li>
+        <% } %>
+    </ul>
+    <div class="footer">
+        <p>Powered by Hexo</p>
+        <p>鄂ICP备18003567号-2</p>
+    </div>
+</div>
