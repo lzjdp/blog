@@ -25,12 +25,11 @@ jobs:
           ssh-keyscan "39.100.253.134" >> ~/.ssh/known_hosts
       - name: Deploy
         run: |
-          ssh carr@39.100.253.134
-          pwd
-          ls
+          ssh carr@39.100.253.134"
+          cd /home/carr/www
           git remote add origin https://github.com/lzjdp/blog.git
           git pull origin master
-          git remote remove origin
+          git remote remove origin"
       - name: delete ssh key
         run: rm -rf ~/.ssh/id_rsa
       # - name: Setup Git Infomation
