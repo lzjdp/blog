@@ -18,7 +18,8 @@ jobs:
             npm install hexo-cli -g
             npm install
       - name: Setup Deploy Private Key
-        env: HEXO_DEPLOY_PRIVATE_KEY: ${{ secrets.HEXO_DEPLOY_PRIVATE_KEY }}
+        env: 
+          HEXO_DEPLOY_PRIVATE_KEY: ${{ secrets.HEXO_DEPLOY_PRIVATE_KEY }}
         run: |
           echo: "HEXO_DEPLOY_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
