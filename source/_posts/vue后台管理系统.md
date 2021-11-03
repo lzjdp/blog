@@ -5,7 +5,6 @@ tags:
 ---
 
 1. 功能介绍
-
 权限控制
 
 2. 技术栈
@@ -30,5 +29,4 @@ vue init webpack vue-think-admin
 （2）
 
 6. 
-
 

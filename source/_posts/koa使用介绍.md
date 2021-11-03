@@ -42,4 +42,18 @@ request.header  请求头对象
 
 response.method 请求方法
 
+request.search  使用 ? 获取原始查询字符串
+
+request.host    存在时获取主机（hostname:port）
+
+request.hostname    存在时获取主机名
+
+request.URL 获取 WHATWG 解析的 URL 对象
+
+request.type    获取请求 Content-Type, 不含 "charset" 等参数
+
+request.charset     存在时获取请求字符集，或者 undefined：
+
+
+
 6. Response
