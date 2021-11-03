@@ -14,20 +14,21 @@ jobs:
         with:
           node-version: 13.2.0
       - name: Setup Hexo Dependencies
-          run: |
+        run: |
             npm install hexo-cli -g
             npm install
       - name: Setup Deploy Private Key
         env: HEXO_DEPLOY_PRIVATE_KEY: ${{ secrets.HEXO_DEPLOY_PRIVATE_KEY }}
-        echo: "HEXO_DEPLOY_PRIVATE_KEY" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan github.com >> ~/.ssh/known_hosts
+        run: |
+          echo: "HEXO_DEPLOY_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
       - name: Setup Git Infomation
-          run: |
-            git config --global user.name 'carr' 
-            git config --global user.email 'carrlu@163.com'
+        run: |
+          git config --global user.name 'carr' 
+          git config --global user.email 'carrlu@163.com'
       - name: DeployHexo     
-          run: |
-            hexo clean
-            hexo generate 
-            hexo deploy
+        run: |
+          hexo clean
+          hexo generate 
+          hexo deploy
