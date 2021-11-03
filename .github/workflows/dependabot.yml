@@ -26,8 +26,7 @@ jobs:
       - name: Deploy
         run: |
           ssh carr@39.100.253.134
-          cd ..
-          cd ~/www
+          cd ~/
           # git remote add origin https://github.com/lzjdp/blog.git
           git pull origin master
           git remote remove origin
