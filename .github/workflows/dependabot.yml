@@ -27,6 +27,7 @@ jobs:
         run: |
           ssh carr@39.100.253.134 "
           cd /home/carr/www
+          git init
           git remote add origin https://github.com/lzjdp/blog.git
           git pull origin master
           git remote remove origin"

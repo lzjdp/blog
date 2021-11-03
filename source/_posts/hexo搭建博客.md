@@ -34,6 +34,13 @@ scaffolds   模版文件夹，当您新建文章时，Hexo 会根据 scaffold �
 source  资源文件夹是存放用户资源的地方
 themes  主题 文件夹，Hexo 会根据主题来生成静态页面
 
+（5）配置
+_config.yml
+|  表头   | 表头  |
+|  ----  | ----  |
+| 单元格  | 单元格 |
+| 单元格  | 单元格 |
+
 ##### 2. 搭建博客
 
 ##### 3. 关于Github Actions
