@@ -25,7 +25,7 @@ jobs:
           ssh-keyscan "39.100.253.134" >> ~/.ssh/known_hosts
       - name: Deploy
         run: |
-          ssh carr@39.100.253.134"
+          ssh carr@39.100.253.134 "
           cd /home/carr/www
           git remote add origin https://github.com/lzjdp/blog.git
           git pull origin master

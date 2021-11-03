@@ -5,6 +5,34 @@ tags:
 ---
 
 ##### 1. hexo介绍
+（1）hexo时什么？
+Hexo 是一个快速、简洁且高效的博客框架
+
+（2）安装
+```
+npm install -g hexo-cli
+```
+
+（3）初始化一个网站项目
+```
+hexo init <folder>
+cd <folder>
+npm install
+```
+（3）项目文件目录
+├── _config.yml
+├── package.json
+├── scaffolds
+├── source
+|   ├── _drafts
+|   └── _posts
+└── themes
+
+（4）文件介绍
+_config.yml 网站的配置信息
+scaffolds   模版文件夹，当您新建文章时，Hexo 会根据 scaffold 来建立文件
+source  资源文件夹是存放用户资源的地方
+themes  主题 文件夹，Hexo 会根据主题来生成静态页面
 
 ##### 2. 搭建博客
 
