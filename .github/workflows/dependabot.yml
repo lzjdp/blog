@@ -39,5 +39,5 @@ jobs:
           SOURCE: "public"
           REMOTE_HOST: "39.100.253.134"
           REMOTE_USER: "carr"
-          TARGET: "/home/carr/www/carrBlog"
+          TARGET: "/home/carr/www/carrBlog/"
           
