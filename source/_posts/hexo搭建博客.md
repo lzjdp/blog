@@ -36,10 +36,59 @@ themes  主题 文件夹，Hexo 会根据主题来生成静态页面
 
 （5）配置
 _config.yml
-|  表头   | 表头  |
-|  ----  | ----  |
-| 单元格  | 单元格 |
-| 单元格  | 单元格 |
+
+|  参数  | 描述  |
+|  ----  | ---- | 
+| title  | 网站标题 |
+| subtitle  | 网站副标题 |
+| description  | 网站描述 |
+| keywords  | 网站的关键词。支持多个关键词。 |
+| author  | 您的名字 |
+| language  | 网站使用的语言，常见的有 zh-Hans和 zh-CN |
+| timezone  | 网站时区，中国大陆地区可以使用 Asia/Shanghai |
+
+（6）指令
+init 新建一个网站
+```
+hexo init [folder]
+```
+
+new 新建一篇文章
+```
+hexo new [layout] <title>
+```
+
+generate 生成静态文件
+```
+hexo generate
+```
+
+publish 发表草稿
+```
+ hexo publish [layout] <filename>
+```
+
+server 启动服务器。默认情况下，访问网址为： http://localhost:4000/
+```
+hexo server
+```
+参数：
+-p, --port	重设端口
+-s, --static	只使用静态文件
+-l, --log	启动日记记录，使用覆盖记录格式
+
+deploy 部署网站
+```
+hexo deploy
+```
+参数：
+g, --generate	部署之前预先生成静态文件
+
+clean 除缓存文件 (db.json) 和已生成的静态文件 (public)
+```
+hexo clean
+```
+
 
 ##### 2. 搭建博客
 
@@ -107,5 +156,21 @@ jobs.<job_id>.steps.name：步骤名称。
 jobs.<job_id>.steps.run：该步骤运行的命令或者 action。
 jobs.<job_id>.steps.env：该步骤所需的环境变量。
 ```
-
 ##### 4. 部署到ECS
+（1）购买一台ECS服务器
+
+（2）创建一个用户
+
+（3）设置用户免密码登陆
+
+（4）执行github actions上传代码到ECS
+
+（5）申请域名
+
+（6）配置nginx
+
+（7）设置ECS
+
+（8）配置https
+
+（9）安全防护

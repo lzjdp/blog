@@ -1,0 +1,619 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-10-29 10:06:38
+ * @LastEditTime: 2021-11-02 09:54:29
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /carrblog/themes/hexo-theme-keep/layout/layout.ejs
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!--
+ * @Author: your name
+ * @Date: 2021-10-29 10:06:38
+ * @LastEditTime: 2021-11-02 09:53:55
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /carrblog/themes/hexo-theme-keep/layout/_partial/head.ejs
+-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="web前端 前端开发 javascript vue react 小程序 node">
+    <meta name="description" content="分享前端开发知识">
+    <meta name="author" content="carrlu">
+    
+    <title>
+        
+            vue入门教程 |
+        
+        Carr&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/lib/highlight/styles/atom-one-dark.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Carr&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于我
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于我</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">vue入门教程</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">carrlu</span>
+                        
+                            <span class="author-label">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-10-31 21:19:30
+    </span>
+    
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <ol>
+<li><p>vue简介<br> Vue是一套用于构建用户界面的渐进式框架，Vue能够为复杂的单页面应用提供驱动</p>
+</li>
+<li><p>安装<br>（1）CDN引入</p>
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2&quot;&gt;&lt;/script&gt;
+</code></pre>
+</li>
+</ol>
+<p>（2）脚手架工具vue-cli</p>
+<pre><code>// 全局安装vue-cli
+npm install vue-cli -g
+
+// create vue project
+vue init wepack demo-name   // for vue-cli@2.x
+
+or
+
+vue create  // for vue-cli@3.x
+</code></pre>
+<ol start="3">
+<li><p>Vue实例</p>
+<pre><code>var data = &#123;a: 1&#125;
+var vm = new Vue(&#123;
+ data: data
+&#125;)
+</code></pre>
+</li>
+<li><p>生命周期<br><img src="/2021/10/31/vue%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/lifecycle.png" alt="vue生命周期"></p>
+</li>
+<li><p>插值（Mustache）<br>数据绑定最常见的形式就是使用’Mustache’语法（双大括号）的文本插值</p>
+<pre><code>&lt;span&gt;&#123;&#123;Message: &#123;&#123;msg&#125;&#125;&#125;&#125;&lt;/span&gt;
+</code></pre>
+</li>
+<li><p>指令<br>指定（Directives）是带有v-前缀的特殊attribute，指令的指责是，当表达式的值改变时，<br>将其产生的连带影响，响应式的用于DOM<br>v-on    // 缩写 :<br>v-bind  // 缩写 @<br>v-if<br>v-else<br>v-else-if<br>v-html<br>v-for<br>v-show</p>
+</li>
+<li><p>修饰符<br>.prevent</p>
+</li>
+<li><p>计算属性(computed)<br>计算属性</p>
+<pre><code>var vm = new Vue(&#123;
+ el: &#39;#app&#39;,
+ data: &#123;
+     message: &#39;Hello&#39;
+ &#125;,
+ computed: &#123;
+     reversedMessage: function () &#123;
+         // this指向vm实例
+         return this.message.split(&#39;&#39;).reverse().join(&#39;&#39;)
+     &#125;
+ &#125;
+&#125;)
+</code></pre>
+</li>
+<li><p>侦听器<br>```</p>
+<div id="app">
+ <p>
+     Ask a yes/no question
+     <input v-model="question">
+ </p>
+</div></li>
+</ol>
+<p>var vm = new Vue({<br>    el: ‘#app’,<br>    data () {<br>        return {<br>            question: ‘’,<br>            answer: ‘I cannot give you an answer until you ask a question!’<br>        }<br>    },<br>    created () {<br>        this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)<br>    },<br>    watch: {<br>        question: function (newQuestion, oldQuestion) {<br>            this.answer = ‘Waiting for you to stop typing…’<br>            this.debouncedGetAnswer()<br>        }<br>    },<br>    methods: {<br>        getAnsswer: function () {<br>            if (this.question.indexOf(‘?’) === -1) {<br>                this.answer = ‘’Questions usually contain a question mark. ;-)’<br>                return<br>            }<br>            this.answer = ‘Thinking…’<br>            var vm = this<br>            axios.get(‘’).then(res =&gt; {<br>                vm.answer = _.capitalize(response.data.answer)<br>            }).catch(error =&gt; {<br>                vm.answer = ‘Error! Could not reach the API. ‘ + error<br>            })<br>        }<br>    }<br>})</p>
+<pre><code>
+10. class与style绑定
+</code></pre>
+<pre><code>
+11. 条件渲染
+
+12. 列表渲染
+</code></pre>
+<ul>
+    <li v-for="item in items" :key="item.message">
+        
+    </li>
+</ul>
+```
+
+<p>总结：<br>（1）建议给每个遍历项添加一个唯一的key，且不是下标<br>（2）不建议v-for, v-if在上同一个元素上同时使用<br>（3）v-for的优先级高于v-if</p>
+<ol start="13">
+<li>事件处理（v-on）<br>用v-on指令监听DOM事件<br>```<div id="app">
+<button v-on:click="greet">Greet</button>
+</div></li>
+</ol>
+<p>var app = new Vue({<br>    el: ‘#app’,<br>    data: {<br>        name: ‘Vue.js’<br>    },<br>    methods: {<br>        greet: function (event) {<br>            if (event) {<br>                alert(event.target.tagName)<br>            }<br>        }<br>    }<br>})</p>
+<pre><code>事件修饰符：
+.stop
+.prevent
+.capture
+.self
+.once
+.passive
+.enter
+.tab
+.delete
+.esc
+.space
+.up
+.down
+.left
+.right
+</code></pre>
+<!-- 提交事件不再重载页面 -->
+<form v-on:submit.prevent="onSubmit"></form>
+
+<!-- 修饰符可以串联 -->
+<p><a v-on:click.stop.prevent="doThat"></a></p>
+<!-- 只有修饰符 -->
+<form v-on:submit.prevent></form>
+
+<!-- 添加事件监听器时使用事件捕获模式 -->
+<!-- 即内部元素触发的事件先在此处理，然后才交由内部元素进行处理 -->
+<div v-on:click.capture="doThis">...</div>
+
+<!-- 只当在 event.target 是当前元素自身时触发处理函数 -->
+<!-- 即事件不是从内部元素触发的 -->
+<div v-on:click.self="doThat">...</div>
+```
+
+<ol start="14">
+<li>表单输入绑定（v-model）<br>v-model<br>```<br>// 文本<input v-model="message">
+<p>Message is: </p></li>
+</ol>
+<p>// 复选框<br><input type="checkbox" id="checkbox" v-model="checked"><br><label for="checkbox"></label></p>
+<pre><code>
+修饰符：
+.lazy   在“change”时而非“input”时更新
+.trim   自动过滤用户输入的首尾空白字符
+.number 将用户的输入值转为数值类型
+</code></pre>
+<input v-model.lazy="msg">
+
+<input v-model.number="age" type="number">
+
+<input v-model.trim="msg">
+```
+
+<ol start="15">
+<li>组件<br>（1）通过props向子组件传递数据<pre><code>Vue.component(&#39;&#39;, &#123;
+props: [&#39;title&#39;],
+temlate: &#39;&lt;h3&gt;&#123;&#123;title&#125;&#125;&lt;/h3&gt;&#39;
+&#125;)
+</code></pre>
+</li>
+</ol>
+<p>（2）通过$emit监听子组件事件</p>
+<pre><code>
+</code></pre>
+<p>（3）插槽slot</p>
+<pre><code>
+</code></pre>
+<p>（4）动态组件<br>总结：<br>（1）组件的data必须一个函数</p>
+<ol start="16">
+<li>prop<br>(1)prop类型<br>Srtring<br>Number<br>Boolean<br>Array<br>Object<br>Function<br>Promise</li>
+</ol>
+<p>(2) 单向数据流<br>所有的 prop 都使得其父子 prop 之间形成了一个单向下行绑定：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外变更父级组件的状态，从而导致你的应用的数据流向难以理解</p>
+<p>(3) prop验证</p>
+<ol start="17">
+<li><p>进入离开列表过渡</p>
+</li>
+<li><p>混入<br>```<br>var myMixin = {<br>created: function () {</p>
+<pre><code>this.hello()
+</code></pre>
+<p>},<br>methods: {</p>
+<pre><code>hello: function () &#123;
+    console.log(&#39;hello&#39;)
+&#125;
+</code></pre>
+<p>}<br>}</p>
+</li>
+</ol>
+<p>var Component = Vue.extend({<br>    mixins: [myMixin]<br>})</p>
+<pre><code>
+19. 自定义指令
+</code></pre>
+<p>Vue.directive(‘focus’, {<br>    // / 当被绑定的元素插入到 DOM 中时……<br>    inserted: function (el) {<br>        // 聚焦元素<br>    el.focus()<br>        el.focus()<br>    }<br>})</p>
+<pre><code>钩子函数：
+bind    只调用一次，指令第一次绑定到元素时调用
+inserted    被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)
+update  所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前
+componentUpdated    指令所在组件的 VNode 及其子 VNode 全部更新后调用
+unbind  只调用一次，指令与元素解绑时调用
+
+20. Render &amp; JSX
+
+21. 插件
+通过全局方法 Vue.use() 使用插件
+</code></pre>
+<p>// 调用 <code>MyPlugin.install(Vue)</code><br>Vue.use(MyPlugin)</p>
+<p>new Vue({<br>  // …组件选项<br>})</p>
+<pre><code>开发插件
+</code></pre>
+<pre><code>
+22. 过滤器
+</code></pre>
+<!-- 在双花括号中 -->
+
+
+<!-- 在 `v-bind` 中 -->
+<div v-bind:id="rawId | formatId"></div>
+
+<p>filters: {<br>    capitalize: function (value) {<br>        if (!value) {<br>            value = value.toString()<br>            return value.chartAt(0).toUpperCase() + value.slice(1)<br>        }<br>    }<br>}</p>
+<pre><code>全局注册过滤器
+Vue.filter(&#39;capitalize&#39;, function (value) &#123;
+    if (!value) &#123;
+        value = value.toString()
+        return value.chartAt(0).toUpperCase() + value.slice(1)
+    &#125;
+&#125;)
+
+23. 插槽
+</code></pre>
+<navigation-link url="/profile">
+  Your Profile
+</navigation-link>
+
+<p>&lt;a<br>  v-bind:href=”url”<br>  class=”nav-link”</p>
+<blockquote>
+</blockquote>
+<p>  <slot></slot><br></p>
+<pre><code>具名插槽
+</code></pre>
+<div class="container">
+    <header>
+        <slot name="header"></slot>
+    </header>
+    <main></main>
+    <footer>
+        <slot name="footer"></slot>
+    </footer>
+</div>
+
+<base-layout>
+    <template v-slot:header>
+        <h1>Here might be a page title</h1>
+    </template>
+        <p>A paragraph for the main content.</p>
+        <p>And another one.</p>
+    <template v-slot:footer>
+        <p>Here's some contact info</p>
+    </template>
+</base-layout>
+
+<p>// 任何没有被包裹在带有 v-slot 的 <template> 中的内容都会被视为默认插槽的内容</template></p>
+<pre><code>
+作用域插槽
+
+24. 测试
+（1）官方推荐测试框架Vue Testing Library (@testing-library/vue)
+
+（2）安装
+</code></pre>
+<p>npm install –save-dev jest @vue/test-utils</p>
+<pre><code>
+（3）添加脚本
+</code></pre>
+<p>// package.json<br>{<br>  “scripts”: {<br>    “test”: “jest”<br>  }<br>}</p>
+<pre><code>
+（4）
+</code></pre>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/10/31/react%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">react入门教程</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/10/30/javascript%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">javascript入门教程</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">carrlu</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</body>
+</html>

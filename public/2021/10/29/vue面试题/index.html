@@ -1,0 +1,474 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-10-29 10:06:38
+ * @LastEditTime: 2021-11-02 09:54:29
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /carrblog/themes/hexo-theme-keep/layout/layout.ejs
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!--
+ * @Author: your name
+ * @Date: 2021-10-29 10:06:38
+ * @LastEditTime: 2021-11-02 09:53:55
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /carrblog/themes/hexo-theme-keep/layout/_partial/head.ejs
+-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="web前端 前端开发 javascript vue react 小程序 node">
+    <meta name="description" content="分享前端开发知识">
+    <meta name="author" content="carrlu">
+    
+    <title>
+        
+            vue面试题 |
+        
+        Carr&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/lib/highlight/styles/atom-one-dark.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Carr&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于我
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于我</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">vue面试题</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">carrlu</span>
+                        
+                            <span class="author-label">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-10-29 13:56:59
+    </span>
+    
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h5 id="1-vue2-0生命周期有哪些？"><a href="#1-vue2-0生命周期有哪些？" class="headerlink" title="1.vue2.0生命周期有哪些？"></a>1.vue2.0生命周期有哪些？</h5><pre><code>beforeCreate    组件创建，元素dom和数据还没有初始化
+created         数据data已经初始化完成，方法可以调用，但dom未渲染
+beforeMount     dom未挂载，数据初始化已完成，但双向绑定还是显示&#123;&#123;&#125;&#125;
+mounted         dom完成挂载，一般数据请求放在这里，因为请求改变数据之后刚好渲染
+beforeUpdate    页面数据改变了都会触发
+updated         只要页面数据改变了都会触发，页面更新完毕
+beforeDestory   组件销毁之前执行
+destoryed       组件销毁
+```
+
+##### 2.v-model的实现原理？
+v-model在表单input、textarea、select等元素上创建双向数据绑定，v-model本质上是语法糖
+
+##### 3.vue响应式原理？
+数据劫持+观察者模式
+使用Object.defineProperty将属性进行劫持，数组则是通过重写数据来实现，当页面使用对应属性时，
+每个属性都拥有自己的dep属性，存在它所依赖的watcher(依赖收集)get，当属性变化后通知自己对应的watcher去更新(派发更新)set
+
+##### 4.$nextTick有什么作用？
+修改data的值后，需要立即获取dom元素的值，是获取不到的，因为vue是异步渲染的，
+需要通过$nextTick获取
+
+##### 5.v-if与v-show的区别？
+共同点：都能控制元素的显示和隐藏
+不同点：v-show的本质是利用display:none/block来控制元素的显示和隐藏
+       v-if是动态的向dom树添加或删除元素，v-if创建和删除相比v-show更消耗性能
+使用建议：如果需要频繁的切换元素建议使用v-show    
+
+##### 6.computed计算属性与methods的区别？
+computed计算属性有缓存的的功能，只有当指定数据变时，计算属性才会执行，否则否好原来的数据
+methods没有缓存功能，每次渲染都会执行
+
+##### 7.keep-alive的作用？
+keep-alive用来对组件进行缓存
+
+##### 8.组件通信的方法？
+1. props和$emit 父子组件通信
+2. $parent和$children  获取
+3. $attrs和$liteners A->B->C
+4. provide inject注入变量
+5. $refs获取组件实例
+6. EventBus兄弟组件传递数据
+7. vuex状态管理
+```
+// 父组件
+<template>
+    <child :name="childName" :changecount="getCount">
+</child></template>
+<script>
+import Child from './Child'
+export default &#123;
+    components: &#123;
+        Child
+    &#125;,
+    data () &#123;
+        return &#123;
+            childName: 'carr'
+        &#125;
+    &#125;,
+    getCount (count) &#123;
+        console.log(count)
+    &#125;
+&#125;
+</script>
+
+// 子组件
+<template>
+    <div>
+        <p>&#123;&#123;myName&#125;&#125;&lt;/p&gt;
+        &lt;button @click=&quot;changeName&quot;&gt;&#123;&#123;count&#125;&#125;&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default &#123;
+    // 父向子用props
+    props: &#123;
+        myName: &#123;
+            type: String,
+            default: &#39;&#39;
+        &#125;
+    &#125;,
+    data () &#123;
+        return &#123;
+            count: 0
+        &#125;
+    &#125;,
+    methods: &#123;
+        changeName () &#123;
+            this.count += 1
+            this.$emit(&#39;changeCount&#39;, this.count)
+        &#125;
+    &#125;
+&#125;
+&lt;/script&gt;
+</p></div></template></code></pre>
+<h5 id="9-什么是MVVM"><a href="#9-什么是MVVM" class="headerlink" title="9.什么是MVVM?"></a>9.什么是MVVM?</h5><p>M: 模型层<br>VM: 视图模型<br>V: 视图层<br>VM通过数据绑定将后端传递的数据转化成页面，通过DOM事件监听的方式将页面转换为数据传给后端</p>
+<h5 id="10-遍历为什么要使用key？"><a href="#10-遍历为什么要使用key？" class="headerlink" title="10.遍历为什么要使用key？"></a>10.遍历为什么要使用key？</h5><p>key是为Vue中Vnode的唯一标识，通过这个key，我们的diff操作可以更准确、更快速</p>
+<h5 id="11-vue中的data为什么要是一个函数？"><a href="#11-vue中的data为什么要是一个函数？" class="headerlink" title="11.vue中的data为什么要是一个函数？"></a>11.vue中的data为什么要是一个函数？</h5><p>组件的data写成一个函数，数据以函数返回值的形式定过，这样每复用一次组件，就会返回一份新的data，<br>类似于给每个组件实例创建一个私有的数据空间，让每个组件实例维护各自的数据，单纯写成对象的形式，<br>就使得所有组件实例共享一份data</p>
+<h5 id="12-v-if和v-for的优先级？"><a href="#12-v-if和v-for的优先级？" class="headerlink" title="12.v-if和v-for的优先级？"></a>12.v-if和v-for的优先级？</h5><p>v-for的优先级高于v-for</p>
+<h5 id="13-怎样理解vue单向数据流？"><a href="#13-怎样理解vue单向数据流？" class="headerlink" title="13.怎样理解vue单向数据流？"></a>13.怎样理解vue单向数据流？</h5><p>数据总是从父组件传到子组件，子组件没有权利修改父组件传过来的数据，只能请求父组件对原始数据进行<br>修改，这样会防止子组件意外改变父组件的状态，从而导致你的应用数据流向难以理解</p>
+<h5 id="14-computed和watch的区别及应用场景？"><a href="#14-computed和watch的区别及应用场景？" class="headerlink" title="14.computed和watch的区别及应用场景？"></a>14.computed和watch的区别及应用场景？</h5><p>computed是计算属性，依赖其它属性计算值，且computed的值有缓存<br>watch监听到值的变化会执行回调，在回调中可以进行一系列操作<br>计算属性一般用载模板渲染中，某个值时依赖其它属性计算而来，watch适用于观测某个值的变化去完成<br>一些复杂的业务逻辑</p>
+<h5 id="15-vue如何监测数组变化？"><a href="#15-vue如何监测数组变化？" class="headerlink" title="15.vue如何监测数组变化？"></a>15.vue如何监测数组变化？</h5><p>基于性能原因，没有用defineProperty对数组每一项进行拦截，二十选择对7种数组方法进行重写<br>push shift  pop splice  unshift sort  reverse</p>
+<h5 id="16-vue3有哪些变化？"><a href="#16-vue3有哪些变化？" class="headerlink" title="16.vue3有哪些变化？"></a>16.vue3有哪些变化？</h5><ol>
+<li>响应式原理改变，vue3使用Proxy取代vue2版本的Object.defineProperty</li>
+<li>新增了Composition API</li>
+</ol>
+<h5 id="17-虚拟DOM时什么？"><a href="#17-虚拟DOM时什么？" class="headerlink" title="17.虚拟DOM时什么？"></a>17.虚拟DOM时什么？</h5><p>在浏览器中操作DOM是很昂贵的，频繁操作DOM，会产生一定的性能问题，虚拟DOM本质时用一个原生的JS对象<br>去描述一个DOM节点，时对真实DOM的一层抽象</p>
+<h5 id="18-vue事件绑定原理？"><a href="#18-vue事件绑定原理？" class="headerlink" title="18.vue事件绑定原理？"></a>18.vue事件绑定原理？</h5><h5 id="19-vue父子组件生命周期钩子函数执行顺序"><a href="#19-vue父子组件生命周期钩子函数执行顺序" class="headerlink" title="19.vue父子组件生命周期钩子函数执行顺序"></a>19.vue父子组件生命周期钩子函数执行顺序</h5><p>Vue 的父组件和子组件生命周期钩子函数执行顺序可以归类为以下 4 部分：</p>
+<p>加载渲染过程</p>
+<p>父 beforeCreate -&gt; 父 created -&gt; 父 beforeMount -&gt; 子 beforeCreate -&gt; 子 created -&gt; 子 beforeMount -&gt; 子 mounted -&gt; 父 mounted</p>
+<p>子组件更新过程</p>
+<p>父 beforeUpdate -&gt; 子 beforeUpdate -&gt; 子 updated -&gt; 父 updated</p>
+<p>父组件更新过程</p>
+<p>父 beforeUpdate -&gt; 父 updated</p>
+<p>销毁过程</p>
+<p>父 beforeDestroy -&gt; 子 beforeDestroy -&gt; 子 destroyed -&gt; 父 destroyed</p>
+<h5 id="20-动态绑定class和style"><a href="#20-动态绑定class和style" class="headerlink" title="20.动态绑定class和style"></a>20.动态绑定class和style</h5><pre><code>// 对象语法
+&lt;div :class=&quot;&#123;&#39;active&#39;: isActive, &#39;text-danger&#39;: hasError&#125;&quot;&gt;&lt;/div&gt;
+
+// 数组语法
+&lt;div :class=&quot;[isActive ? &#39;activeClass&#39; : &#39;&#39;, &#39;errorClass&#39;]&quot;&gt;&lt;/div&gt;
+
+// 对象语法
+&lt;div :style=&quot;&#123;color: activeColor, fontSize: fontSize + &#39;px&#39;&#125;&quot;&gt;&lt;/div&gt;
+
+// 数组语法
+&lt;div :style=&quot;[styleColor, styleSize]&quot;&gt;&lt;/div&gt;
+</code></pre>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/10/29/react%E9%9D%A2%E8%AF%95%E9%A2%98/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">react面试题</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">carrlu</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</body>
+</html>
