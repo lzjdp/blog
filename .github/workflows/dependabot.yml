@@ -16,7 +16,6 @@ jobs:
       - name: Setup Hexo Dependencies
         run: |
             npm install hexo-cli -g
-            hexo generate 
       - name: Setup Deploy Private Key
         run: |
           mkdir -p ~/.ssh/
