@@ -16,7 +16,6 @@ jobs:
       - name: Setup Hexo Dependencies
         run: |
             npm install hexo-cli -g
-            hexo clean
             hexo generate 
             hexo deploy
       - name: Setup Deploy Private Key
