@@ -4,13 +4,13 @@
 
 # Site
 # 网站标题
-title: CarrBlog
+title: Carr'Blog
 # 网站副标题
-subtitle: '前端博客'
+subtitle: 'show me code'
 # 网站描述
 description: '分享前端开发知识'
 # 关键词
-keywords: 'web前端 前端开发 javascript vue react 小程序 node'
+keywords: 'web前端 前端开发 html css js javascript vue react 小程序 node koa express mysql'
 # 作者
 author: Carr Lu
 # 语言
@@ -104,7 +104,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: hexo-theme-keep
+theme: landscape
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
