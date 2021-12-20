@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Carr&#39;Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="分享前端开发知识">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Carr&#39;Blog">
+<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:site_name" content="Carr&#39;Blog">
+<meta property="og:description" content="分享前端开发知识">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Carr Lu">
+<meta property="article:tag" content="web前端 前端开发 html css js javascript vue react 小程序 node koa express mysql">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Carr&#39;Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Carr&#39;Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-es6入门" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/10/29/es6%E5%85%A5%E9%97%A8/" class="article-date">
+  <time datetime="2021-10-29T06:25:17.000Z" itemprop="datePublished">2021-10-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/29/es6%E5%85%A5%E9%97%A8/">es6入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h5 id="1-let-const">
+          <a href="#1-let-const" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-let-const" class="headerlink" title="1. let const"></a>1. let const</h5>
+      <p>(1) let用于定义变量，const用于定义常量<br>(2) let、const存在块级作用域<br>(3) let不与许在同作用域内重复声明<br>(4) const一旦声明不可改变<br>(5) const声明不可重复<br>(6) 不存在变量提升，必须先声明再使用</p>
+
+        <h5 id="2-解构赋值">
+          <a href="#2-解构赋值" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-解构赋值" class="headerlink" title="2. 解构赋值"></a>2. 解构赋值</h5>
+      <p>（1）数组解构赋值</p>
+<pre><code>let [a, b, c] = [1, 2, 3]
+let [x, , y] = [1, 2, 3]
+let [head, ...tail] = [1, 2, 3, 4]
+</code></pre>
+<p>（2）对象解构赋值</p>
+<pre><code>let &#123;foo, bar&#125; = &#123; foo: &#39;aaa&#39;, bar: &#39;bbb&#39; &#125;
+var &#123;&#125;x, y = 5&#125; = &#123;x: 1&#125;
+</code></pre>
+<p>（3）字符串解构赋值</p>
+<pre><code>const [a, b, c, d, e] = &#39;hello&#39;
+a   // &#39;h&#39;
+b   // &#39;e&#39;
+c   // &#39;l&#39;
+d   // &#39;l&#39;
+e   // &#39;o&#39;
+</code></pre>
+<p>（4）函数参数解构赋值</p>
+<pre><code>function add ([x, y]) &#123;
+    return x + y
+&#125;
+add([1, 2])
+</code></pre>
+
+        <h5 id="3-函数扩展">
+          <a href="#3-函数扩展" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-函数扩展" class="headerlink" title="3. 函数扩展"></a>3. 函数扩展</h5>
+      <p>（1）函数参数默认值</p>
+<pre><code>function log (x, y = &#39;world&#39;) &#123;
+    console.log(x, y)
+&#125;
+log(&#39;Hello&#39;)    // Hello World
+log(&#39;Hello&#39;, &#39;China&#39;)   // Hello China
+</code></pre>
+<p>注意：</p>
+<ul>
+<li>不能有同名参数</li>
+<li>参数变量是默认声明的，不能用let或const再次声明</li>
+</ul>
+<p>（2）rest参数</p>
+<pre><code>function add (...values) &#123;
+    let sum = 0
+    for (var val of values) &#123;
+        sum +=val
+    &#125;
+&#125;
+add(2, 5, 3)
+</code></pre>
+<p>（3）箭头函数</p>
+<pre><code>var f = v =&gt; v;
+
+// 等同于
+var f = function (v) &#123;
+  return v;
+&#125;;
+
+// 没有参数
+var f = () =&gt; return 200
+
+// 一个参数
+var f = v =&gt; v
+
+// 多个参数
+var sum = (num1, num2) =&gt; num1 + num2
+
+// 代码块内有多句代码
+var check = (x, y) =&gt; &#123;
+    console.log(x, y)
+    return x + y
+&#125;
+</code></pre>
+<p>注意：</p>
+<ul>
+<li>箭头函数没有自己的this对象</li>
+<li>不可以当作构造函数</li>
+<li>不可以使用arguments对象</li>
+<li>不可以使用yield命令，因此箭头函数不能用作 Generator 函数</li>
+</ul>
+
+        <h5 id="4-数组扩展">
+          <a href="#4-数组扩展" class="heading-link"><i class="fas fa-link"></i></a><a href="#4-数组扩展" class="headerlink" title="4. 数组扩展"></a>4. 数组扩展</h5>
+      <p>（1）复制数组</p>
+<pre><code>const a1 = [1,2]
+const a2 =[...a1]   // 这种复制属于深拷贝
+</code></pre>
+<p>（2）合并数组</p>
+<pre><code>const arr1 = [&#39;a&#39;, &#39;c&#39;]
+const arr2 = [&#39;d,&#39;]
+[...arr1, ...arr2]  // [&#39;a&#39;, &#39;c&#39;, &#39;d&#39;]
+</code></pre>
+<p>（3）Array.from()<br>Array.from方法用于将两类对象转为真正的数组</p>
+<p>（4）Array.of()</p>
+
+        <h5 id="5-对象扩展">
+          <a href="#5-对象扩展" class="heading-link"><i class="fas fa-link"></i></a><a href="#5-对象扩展" class="headerlink" title="5. 对象扩展"></a>5. 对象扩展</h5>
+      <p>（1）属性的简洁表示</p>
+<pre><code>
+</code></pre>
+
+        <h5 id="6-扩展运算符">
+          <a href="#6-扩展运算符" class="heading-link"><i class="fas fa-link"></i></a><a href="#6-扩展运算符" class="headerlink" title="6. 扩展运算符"></a>6. 扩展运算符</h5>
+      
+        <h5 id="7-symbol">
+          <a href="#7-symbol" class="heading-link"><i class="fas fa-link"></i></a><a href="#7-symbol" class="headerlink" title="7. symbol"></a>7. symbol</h5>
+      
+        <h5 id="8-迭代器">
+          <a href="#8-迭代器" class="heading-link"><i class="fas fa-link"></i></a><a href="#8-迭代器" class="headerlink" title="8. 迭代器"></a>8. 迭代器</h5>
+      
+        <h5 id="9-生成器">
+          <a href="#9-生成器" class="heading-link"><i class="fas fa-link"></i></a><a href="#9-生成器" class="headerlink" title="9. 生成器"></a>9. 生成器</h5>
+      
+        <h5 id="10-promise">
+          <a href="#10-promise" class="heading-link"><i class="fas fa-link"></i></a><a href="#10-promise" class="headerlink" title="10. promise"></a>10. promise</h5>
+      <p>（1）含义<br>Promise 是异步编程的一种解决方案，所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果</p>
+<p>（2）Promise对象有两个特点</p>
+<ul>
+<li><p>对象的状态不受外界影响</p>
+</li>
+<li><p>一旦状态改变，就不会再变，任何时候都可以得到这个结果</p>
+</li>
+</ul>
+<p>（3）基本用法</p>
+<pre><code>const promise = new Promise((resolve, reject) =&gt; &#123;
+    if (/* 异步操作成功 */) &#123;
+        resolve(value)
+    &#125; else &#123;
+        reject(error)
+    &#125;
+&#125;)
+</code></pre>
+<ul>
+<li>Promise对象是一个构造函数，用来生成Promise实例</li>
+<li>Promise构造函数接受一个函数作为参数，该函数的两个参数分别是resolve和reject</li>
+<li>resolve函数的作用是，将Promise对象的状态从“未完成”变为“成功”（即从 pending 变为 resolved），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；</li>
+<li>reject函数的作用是，将Promise对象的状态从“未完成”变为“失败”（即从 pending 变为 rejected），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。</li>
+</ul>
+
+        <h5 id="11-set-map">
+          <a href="#11-set-map" class="heading-link"><i class="fas fa-link"></i></a><a href="#11-set-map" class="headerlink" title="11. set map"></a>11. set map</h5>
+      
+        <h5 id="12-class">
+          <a href="#12-class" class="heading-link"><i class="fas fa-link"></i></a><a href="#12-class" class="headerlink" title="12. class"></a>12. class</h5>
+      <p>（1）含义<br>ES6 的class可以看作只是一个语法糖，它的绝大部分功能，ES5 都可以做到，新的class写法只是让对象原型的写法更加清晰、更像面向对象编程的语法而已</p>
+<p>（2）定义一个class</p>
+<pre><code>class point &#123;
+    // 构造方法
+    constructor (x, y) &#123;
+        this.x = x
+        this.y = y
+    &#125;
+    toString () &#123;
+        return &#39;(&#39; + this.x + &#39;, &#39; + this.y + &#39;)&#39;;
+    &#125;
+&#125;
+</code></pre>
+<p>ES6 的类，完全可以看作构造函数的另一种写法</p>
+<pre><code>class Point &#123;
+  // ...
+&#125;
+
+typeof Point // &quot;function&quot;
+Point === Point.prototype.constructor // true
+</code></pre>
+<p>类的数据类型就是函数，类本身就指向构造函数</p>
+<pre><code>class Bar &#123;
+  doStuff() &#123;
+    console.log(&#39;stuff&#39;);
+  &#125;
+&#125;
+
+const b = new Bar();
+b.doStuff() // &quot;stuff&quot;
+</code></pre>
+<p>构造函数的prototype属性，在 ES6 的“类”上面继续存在。事实上，类的所有方法都定义在类的prototype属性上面</p>
+<pre><code>class Point &#123;
+  constructor() &#123;
+    // ...
+  &#125;
+
+  toString() &#123;
+    // ...
+  &#125;
+
+  toValue() &#123;
+    // ...
+  &#125;
+&#125;
+
+// 等同于
+
+Point.prototype = &#123;
+  constructor() &#123;&#125;,
+  toString() &#123;&#125;,
+  toValue() &#123;&#125;,
+&#125;;
+</code></pre>
+<p>（2）constructor方法<br>constructor()方法是类的默认方法，通过new命令生成对象实例时，自动调用该方法。一个类必须有constructor()方法，如果没有显式定义，一个空的constructor()方法会被默认添加</p>
+<pre><code>class Point &#123;
+&#125;
+
+// 等同于
+class Point &#123;
+  constructor() &#123;&#125;
+&#125;
+</code></pre>
+<p>（3）类的实例</p>
+<pre><code>/定义类
+class Point &#123;
+
+  constructor(x, y) &#123;
+    this.x = x;
+    this.y = y;
+  &#125;
+
+  toString() &#123;
+    return &#39;(&#39; + this.x + &#39;, &#39; + this.y + &#39;)&#39;;
+  &#125;
+
+&#125;
+
+var point = new Point(2, 3);
+
+point.toString() // (2, 3)
+
+point.hasOwnProperty(&#39;x&#39;) // true
+point.hasOwnProperty(&#39;y&#39;) // true
+point.hasOwnProperty(&#39;toString&#39;) // false
+point.__proto__.hasOwnProperty(&#39;toString&#39;) // true
+</code></pre>
+
+        <h5 id="13-proxy">
+          <a href="#13-proxy" class="heading-link"><i class="fas fa-link"></i></a><a href="#13-proxy" class="headerlink" title="13. proxy"></a>13. proxy</h5>
+      <p>（1）含义<br>Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写</p>
+<p>（2）Proxy 这个词的原意是代理，用在这里表示由它来“代理”某些操作，可以译为“代理器”</p>
+<pre><code>var obj = new Proxy(P&#123;&#125;, &#123;
+    get: function (target, proKey, receiver) &#123;
+        return Relect.get(target, propKey, receiver)
+    &#125;,
+    set: function (target, proKey, value, receiver) &#123;
+        return Relect.set(target, propKey, receiver)
+    &#125;
+&#125;)
+</code></pre>
+<ol start="14">
+<li>async函数<br>（1）含义<br>ES2017 标准引入了 async 函数，它就是 Generator 函数的语法糖<br>Generator 函数</li>
+</ol>
+<pre><code>const fs = require(&#39;fs&#39;);
+
+const readFile = function (fileName) &#123;
+  return new Promise(function (resolve, reject) &#123;
+    fs.readFile(fileName, function(error, data) &#123;
+      if (error) return reject(error);
+      resolve(data);
+    &#125;);
+  &#125;);
+&#125;;
+
+const gen = function* () &#123;
+  const f1 = yield readFile(&#39;/etc/fstab&#39;);
+  const f2 = yield readFile(&#39;/etc/shells&#39;);
+  console.log(f1.toString());
+  console.log(f2.toString());
+&#125;;
+</code></pre>
+<p>async函数</p>
+<pre><code>const asyncReadFile = async function () &#123;
+  const f1 = await readFile(&#39;/etc/fstab&#39;);
+  const f2 = await readFile(&#39;/etc/shells&#39;);
+  console.log(f1.toString());
+  console.log(f2.toString());
+&#125;;
+</code></pre>
+<p>（2）基本用法<br>async函数返回一个 Promise 对象，可以使用then方法添加回调函数。当函数执行的时候，一旦遇到await就会先返回，等到异步操作完成，再接着执行函数体内后面的语句</p>
+<p>本文参考：<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs">ECMAScript 6 入门</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/29/es6%E5%85%A5%E9%97%A8/" data-id="ckwou9u5d00069hwn88g0alou" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-如何用vue造轮子" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/10/29/%E5%A6%82%E4%BD%95%E7%94%A8vue%E9%80%A0%E8%BD%AE%E5%AD%90/" class="article-date">
+  <time datetime="2021-10-29T06:21:06.000Z" itemprop="datePublished">2021-10-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/29/%E5%A6%82%E4%BD%95%E7%94%A8vue%E9%80%A0%E8%BD%AE%E5%AD%90/">vue组件库开发</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/29/%E5%A6%82%E4%BD%95%E7%94%A8vue%E9%80%A0%E8%BD%AE%E5%AD%90/" data-id="ckxedv6td0002w518215hau3l" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-基于vue开发的CRM系统" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/10/29/%E5%9F%BA%E4%BA%8Evue%E5%BC%80%E5%8F%91%E7%9A%84CRM%E7%B3%BB%E7%BB%9F/" class="article-date">
+  <time datetime="2021-10-29T06:16:48.000Z" itemprop="datePublished">2021-10-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/29/%E5%9F%BA%E4%BA%8Evue%E5%BC%80%E5%8F%91%E7%9A%84CRM%E7%B3%BB%E7%BB%9F/">vue后台管理系统</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h5 id="1-功能模块">
+          <a href="#1-功能模块" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-功能模块" class="headerlink" title="1. 功能模块"></a>1. 功能模块</h5>
+      <p>（1）客户管理<br>    - 仪表盘<br>    - 待办事项<br>    - 线索<br>    - 客户<br>    - 联系人<br>    - 商机<br>    - 合同<br>    - 回款<br>    - 发票<br>    - 产品<br>    - 市场活动<br>（2）人力资源<br>（3）日志<br>（4）项目管理<br>（5）任务审批</p>
+
+        <h5 id="2-技术栈">
+          <a href="#2-技术栈" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-技术栈" class="headerlink" title="2. 技术栈"></a>2. 技术栈</h5>
+      <p><span class="exturl"><a class="exturl__link" href="mailto:&#x76;&#x75;&#x65;&#64;&#50;&#46;&#120;">&#x76;&#x75;&#x65;&#64;&#50;&#46;&#120;</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br><span class="exturl"><a class="exturl__link" href="mailto:&#118;&#x75;&#101;&#x2d;&#99;&#108;&#105;&#64;&#x33;&#x2e;&#120;">&#118;&#x75;&#101;&#x2d;&#99;&#108;&#105;&#64;&#x33;&#x2e;&#120;</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br>vue-router<br>vuex<br>axios<br>element-ui</p>
+
+        <h5 id="3-搭建开发环境">
+          <a href="#3-搭建开发环境" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-搭建开发环境" class="headerlink" title="3. 搭建开发环境"></a>3. 搭建开发环境</h5>
+      <p>(1) 安装node<br>(2) 安装vue-cli</p>
+<pre><code>npm install vue-cli -g
+</code></pre>
+
+        <h5 id="4-项目初始化">
+          <a href="#4-项目初始化" class="heading-link"><i class="fas fa-link"></i></a><a href="#4-项目初始化" class="headerlink" title="4. 项目初始化"></a>4. 项目初始化</h5>
+      <pre><code>vue create crm
+</code></pre>
+
+        <h5 id="5-github管理代码">
+          <a href="#5-github管理代码" class="heading-link"><i class="fas fa-link"></i></a><a href="#5-github管理代码" class="headerlink" title="5. github管理代码"></a>5. github管理代码</h5>
+      <p>（1）github上创建远程代码仓库</p>
+
+        <h5 id="6-项目规划">
+          <a href="#6-项目规划" class="heading-link"><i class="fas fa-link"></i></a><a href="#6-项目规划" class="headerlink" title="6. 项目规划"></a>6. 项目规划</h5>
+      <p>|- api<br>|- assets<br>|- components<br>    |- CreateView.vue   // 新建页面通用组件<br>|- directives<br>|- filters<br>|- router<br>|- store<br>|- styles<br>|- utils<br>|- views<br>    |- CustomerManagement<br>        |- components<br>            |- CrmListHead.vue // 客户管理通用页头<br>        |- customer<br>            |- CustomerIndex.vue<br>|- App.vue<br>|- main.js<br>|- permission.js</p>
+
+        <h5 id="6-axios封装">
+          <a href="#6-axios封装" class="heading-link"><i class="fas fa-link"></i></a><a href="#6-axios封装" class="headerlink" title="6. axios封装"></a>6. axios封装</h5>
+      <pre><code>import axios from &#39;axios&#39;
+
+const service = axios.create(&#123;
+    baseURL: process.env.BASE_API,
+    timeout: 15000
+&#125;)
+
+service.interceptors.request.use(config =&gt; &#123;
+
+&#125;)
+
+service.interceptors.response.use(response =&gt; &#123;
+
+&#125;)
+
+export default service
+</code></pre>
+
+        <h5 id="7-请求API">
+          <a href="#7-请求API" class="heading-link"><i class="fas fa-link"></i></a><a href="#7-请求API" class="headerlink" title="7. 请求API"></a>7. 请求API</h5>
+      <p>api/user.js</p>
+<pre><code>import request from &#39;@/utils/request&#39;
+
+export default login (username, password) &#123;
+    return request(&#123;
+        url: &#39;/login&#39;,
+        data: &#123;
+            username,
+            password
+        &#125;
+    &#125;)
+&#125;
+</code></pre>
+
+        <h5 id="8-公共模块封装">
+          <a href="#8-公共模块封装" class="heading-link"><i class="fas fa-link"></i></a><a href="#8-公共模块封装" class="headerlink" title="8. 公共模块封装"></a>8. 公共模块封装</h5>
+      <p>（1）新建页面组件</p>
+<pre><code>&lt;template&gt;
+    &lt;transition name=&quot;opacity-fade&quot;&gt;
+        &lt;div 
+            class=&quot;c-view&quot;
+            :style=&quot;&#123;&#39;background-color&#39;: backgroundColor, &#39;padding&#39;: padding&#125;&quot;
+        &gt;
+            &lt;el-card
+                v-loading=&quot;loading&quot;
+                :style=&quot;&#123;&#39;width&#39;: width&#125;&quot;
+            &gt;
+                &lt;slot name=&quot;header&quot; /&gt;
+                &lt;slot /&gt;
+            &lt;/el-card&gt;
+        &lt;/div&gt;
+    &lt;/transition&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default &#123;
+    name: &#39;CreateView&#39;,
+    props: &#123;
+        borderStyle: &#123;
+            type: Object,
+            default: () =&gt; &#123;
+                return &#123;&#125;
+            &#125;
+        &#125;,
+        loading: &#123;
+            type: Boolean,
+            default: false
+        &#125;,
+        width: &#123;
+            type: String,
+            default: &#39;700px&#39;
+        &#125;,
+        backgroundColor: &#123;
+            type: String,
+            default: &#39;#F5F6F9&#39; // rgba(0, 0, 0, 0.6) 黑色半透明
+        &#125;,
+        /** 展示内容的上下padding **/
+        padding: &#123;
+            type: String,
+            default: &#39;40px&#39;
+        &#125;
+    &#125;,
+    data () &#123;
+        return &#123;
+            
+        &#125;
+    &#125;
+&#125;
+&lt;/script&gt;
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.opacity-fade-enter,
+.opacity-fade-leave-active&#123;
+    transition: all 0.2s;
+&#125;
+.opacity-fade-enter,
+.opacity-fade-leave-to&#123;
+    opacity: 0;
+&#125;
+&lt;/style&gt;
+</code></pre>
+
+        <h5 id="7-状态管理">
+          <a href="#7-状态管理" class="heading-link"><i class="fas fa-link"></i></a><a href="#7-状态管理" class="headerlink" title="7. 状态管理"></a>7. 状态管理</h5>
+      <ul>
+<li>store/index.js</li>
+</ul>
+<pre><code>import Vue from &#39;vue&#39;
+import Vuex from &#39;vuex&#39;
+import getters from &#39;./getters&#39;
+import customer from &#39;./modules/customer&#39;
+
+Vue.use(Vuex)
+
+const store = new Vuex.Store(&#123;
+    modules: &#123;
+        app,
+        customer
+    &#125;,
+    getters
+&#125;)
+
+export default store
+</code></pre>
+<ul>
+<li>store/getters.js</li>
+</ul>
+<pre><code>const getters = &#123;
+    crm: state =&gt; state.user.crm
+&#125;
+
+export default getters
+</code></pre>
+<ul>
+<li>store/modules/user.js</li>
+</ul>
+<pre><code>import &#123; login, logout &#125; from &#39;@/api/login&#39;
+const app = &#123;
+    state: &#123;
+        crm: &#123;&#125;,    // 客户管理
+    &#125;,
+    mutations: &#123;
+        SET_CRM: (state, crm) =&gt; &#123;
+            state.crm = crm
+        &#125;
+    &#125;,
+    actions: &#123;
+        Login(&#123;commit&#125;, userInfo)&#123;
+            return new Promise((resolve, reject) =&gt; &#123;
+                login(username, userInfo.password).then(data =&gt; &#123;
+                    commit(&#39;SET_CRM&#39;, data.auth.crm)
+                &#125;).catch(error =&gt; &#123;
+                    reject(error)
+                &#125;)
+            &#125;)
+        &#125;
+    &#125;
+&#125;
+export default app
+</code></pre>
+
+        <h5 id="6-客户模块">
+          <a href="#6-客户模块" class="heading-link"><i class="fas fa-link"></i></a><a href="#6-客户模块" class="headerlink" title="6. 客户模块"></a>6. 客户模块</h5>
+      <p>（1）</p>
+<p>（2）分析页面，筛选通用部分，封装成公共组件</p>
+<ul>
+<li>页头部分公用组件封装<br>CrmListHead<br>```<template>
+  <div class="container">
+      <div>vue后台管理系统</div>
+      <el-input placeholder="placeholder" @input="inputChange" v-model="inputContent">
+          <el-button icon="el-icon-search" @click.native="searchInput">
+      </el-button></el-input>  
+      <div class="right-container">
+          <el-button v-if="cansave" type="primary" @click="createClick"></el-button>
+          <el-dropdowm v-if="moreTypes.length > 0" trigger="click" @command="handleTypeDrop">
+              <el-dropdown-menu slot="dropdown">
+                  <el-dropwdown-item v-for="(item, index) in moreTypes" :key="index">
+                      
+                  </el-dropwdown-item></el-dropdown-menu></el-dropdowm>
+              
+          <el-dropdown>
+      </el-dropdown></div>
+      <crm-create-view v-if="isCreate" :crmtype>
+  </crm-create-view></div>
+</template></li>
+</ul>
+<script>
+import { mapGetters } from 'vuex'
+import CrmCreateView from '@/components/CrmCreateView'
+export default {
+    name: 'CrmListHead',
+    components: {
+        CrmCreateView
+    },
+    data () {
+        return {
+            inputContent: '',
+            moreTypes: []
+        }
+    },
+    props: {
+        // 页头主标题
+        title: {
+            type: String,
+            default: '
+        },
+        placeholder: {
+            type: String,
+            default: '请输入内容'
+        },
+        // 页头按钮文字
+        mainTitle: {
+            type: String,
+            default: ''
+        },
+        crmType: {
+            type: String,
+            default: ''
+        },
+        isSeas: {
+            type: Boolean,
+            default: false
+        }
+    },
+    computed: {
+        ...mapGetters(['crm']),
+        canSave () {
+
+        }
+    },
+    mounted () {
+        // 线索和客户判断更多操作
+        if (!this.isSeas) {
+            if (this.crm[this.crmType].excelimport) {
+                this.moreTypes.push({type: 'enter', name: '导入'})
+            }
+            if (this.crm[this.crmType].excelexport) {
+                this.moreTypes.push({type: 'out', name: '导出'})
+            }
+        } else {
+             // 客户池的导出关键字不同
+            if (this.crm.pool.excelexport) {
+                this.moreTypes.push({ type: 'out', name: '导出' })
+            }
+        }
+    },
+    methods: {
+        // 下拉菜单点击
+        handleTypeDrop(command, param = {}) {
+            if (command === 'out') {
+
+            } else if (command === 'enter') {
+
+            }
+        }
+        inputChange() {
+            this.$emit('update:search', this.inputContent)
+        },
+        searchInput () {
+            this.$emit('on-search', this.inputContent)
+        },
+        // 新建按钮
+        createClick () {
+
+        }
+    }
+}
+</script>
+<pre><code>
+（2）mixins
+
+mixin/table.js
+</code></pre>
+<p>import {<br>    crmCustomerIndex<br>} from ‘@/api/customerManagment/customer’<br>export default {<br>    components: {<br>        CrmListHead,<br>    },<br>    data () {<br>        return {<br>            loading: false, // 是否加载中<br>            list: [],   // 表格数据<br>            search: ‘’  // 搜索内容<br>            fieldList: [],  // 表格字段<br>            currentPage: 1, // 当前页面<br>            total: 0,   // 总页数<br>            pageSize: [15, 30, 60, 100],<br>            selectList: [], // 选中的数据<br>        }<br>    },<br>    computed: {<br>        …mapGetters([‘crm’])<br>    },<br>    mounted () {<br>        // 控制table的高度<br>        window.resize = () =&gt; {<br>            this.updateTableHeight()<br>        }<br>    },<br>    methods: {<br>        // 获取数据<br>        getList () {<br>            this.loading = true<br>            var crmIndexRequest = this.getIndexRequest()<br>            // API请求参数<br>            var params = {<br>                page: this.currentPage,<br>                limit: this.pageSize,<br>                search: this.search,<br>                type: this.isSeas ? crmTypeModel.pool : crmTypeModel[this.crmType]<br>            }<br>            // 执行请求<br>            crmIndexRequest(params).then(res =&gt; {<br>                if () {</p>
+<pre><code>            &#125; else &#123;
+                this.list = res.data.list
+            &#125;
+            this.total = res.data.totalRow
+            this.loading = false
+        &#125;).catch(() =&gt;  &#123;
+            this.loading = false
+        &#125;)
+    &#125;,
+    // 判断当前页面要执行的API请求
+    getIndexRequest () &#123;
+        if (this.crmType === &#39;leads&#39;) &#123;
+            return crmLeadsIndex
+        &#125; else if (this.crmType === &#39;customer&#39;) &#123;
+            if (this.isSeas) &#123;
+                return crmCustomerPool
+            &#125; else &#123;
+                return crmCustomerIndex
+            &#125;
+        &#125; else if (this.crmType === &#39;contacts&#39;) &#123;
+            return crmContactsIndex
+        &#125; else if (this.crmType === &#39;business&#39;) &#123;
+            return crmBusinessIndex
+        &#125; else if (this.crmType === &#39;product&#39;) &#123;
+            return crmProductIndex
+        &#125;
+    &#125;,
+    // 搜索
+    crmSearch (value) &#123;
+
+    &#125;
+    // 获取表格字段
+    getFieldList () &#123;
+        
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<pre><code>
+（3）客户管理页面
+
+CustomerIndex.vue
+</code></pre>
+<template>
+    <crm-list-head ref="listHead" title="客户管理" :crm-type="crmType" placeholder="请输入客户名称/手机号" main-title="新建客户">
+    <div>
+        <crm-table-head <pre><code>    /&gt;
+    &lt;el-table
+        v-loading=&quot;loading&quot;
+        :data=&quot;list&quot;
+        style=&quot;width: 100%&quot;
+        border
+        stripe
+    &gt;
+        &lt;el-table-column
+            show-overflow-tooltip
+            type=&quot;selection&quot;
+            align=&quot;center&quot;
+            width=&quot;55&quot;
+        /&gt;
+        &lt;!-- 遍历字段 --&gt;
+        &lt;el-table-column
+            v-for=&quot;(item, index) in fieldList&quot;
+            :key=&quot;item.id&quot;
+            :prop=&quot;item.prop&quot;
+            :label=&quot;item.label&quot;
+            sortable=&quot;custom&quot;
+            show-overflow-tooltip
+        &gt;
+            &lt;template
+                slot=&quot;header&quot;
+                slot-scope=&quot;scope&quot;
+            &gt;
+                &lt;div class=&quot;table-head-name&quot;&gt;&#123;&#123;scope.column.label&#125;&#125;&lt;/div&gt;
+            &lt;/template&gt;
+        &lt;el-table-column/&gt;
+        &lt;el-table-column
+            fixed=&quot;right&quot;
+            width=&quot;36&quot;
+         &gt;
+            
+         &lt;/el-table-column&gt;
+    &lt;/el-table&gt;
+    &lt;!-- 分页 --&gt;
+    &lt;div class=&quot;p-container&quot;&gt;
+        &lt;el-pagition 
+            class=&quot;p-bar&quot;
+            :current-page=&quot;currentPage&quot;
+            :page-sizes=&quot;pageSizes&quot;
+            :titla=&quot;total&quot;
+            layout=&quot;totla, sizes, next, prev, jumper&quot;
+            @current-change=&quot;handleCurrentChange&quot;
+        /&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code>
+</crm-table-head></div></crm-list-head></template>
+<script>
+import { mapGetters } from 'vuex'
+export default {
+    name: 'CustomerIndex',
+    components: {
+
+<pre><code>&#125;,
+computed: &#123;
+    ...mapGetters([&#39;CRMconfig&#39;])
+&#125;,
+minins: [],
+data () &#123;
+    return &#123;
+        crmType: &#39;customer&#39;
+    &#125;
+&#125;,
+methods: &#123;
+
+&#125;
+</code></pre>
+<p>}<br></script><p></p>
+<style lang="scss" scoped>
+
+</style>
+<pre><code>
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/29/%E5%9F%BA%E4%BA%8Evue%E5%BC%80%E5%8F%91%E7%9A%84CRM%E7%B3%BB%E7%BB%9F/" data-id="ckwou9u68000u9hwn2fo59j4y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hexo搭建博客" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/10/29/hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
+  <time datetime="2021-10-29T06:14:50.000Z" itemprop="datePublished">2021-10-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/29/hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">hexo搭建博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h5 id="1-hexo介绍">
+          <a href="#1-hexo介绍" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-hexo介绍" class="headerlink" title="1. hexo介绍"></a>1. hexo介绍</h5>
+      <p>（1）hexo时什么？<br>Hexo 是一个快速、简洁且高效的博客框架</p>
+<p>（2）安装</p>
+<pre><code>npm install -g hexo-cli
+</code></pre>
+<p>（3）初始化一个网站项目</p>
+<pre><code>hexo init &lt;folder&gt;
+cd &lt;folder&gt;
+npm install
+</code></pre>
+<p>（3）项目文件目录<br>├── _config.yml<br>├── package.json<br>├── scaffolds<br>├── source<br>|   ├── _drafts<br>|   └── _posts<br>└── themes</p>
+<p>（4）文件介绍<br>_config.yml 网站的配置信息<br>scaffolds   模版文件夹，当您新建文章时，Hexo 会根据 scaffold 来建立文件<br>source  资源文件夹是存放用户资源的地方<br>themes  主题 文件夹，Hexo 会根据主题来生成静态页面</p>
+<p>（5）配置<br>_config.yml</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title</td>
+<td>网站标题</td>
+</tr>
+<tr>
+<td>subtitle</td>
+<td>网站副标题</td>
+</tr>
+<tr>
+<td>description</td>
+<td>网站描述</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>网站的关键词。支持多个关键词。</td>
+</tr>
+<tr>
+<td>author</td>
+<td>您的名字</td>
+</tr>
+<tr>
+<td>language</td>
+<td>网站使用的语言，常见的有 zh-Hans和 zh-CN</td>
+</tr>
+<tr>
+<td>timezone</td>
+<td>网站时区，中国大陆地区可以使用 Asia/Shanghai</td>
+</tr>
+</tbody></table></div>
+<p>（6）指令<br>init 新建一个网站</p>
+<pre><code>hexo init [folder]
+</code></pre>
+<p>new 新建一篇文章</p>
+<pre><code>hexo new [layout] &lt;title&gt;
+</code></pre>
+<p>generate 生成静态文件</p>
+<pre><code>hexo generate
+</code></pre>
+<p>publish 发表草稿</p>
+<pre><code> hexo publish [layout] &lt;filename&gt;
+</code></pre>
+<p>server 启动服务器。默认情况下，访问网址为： <span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<pre><code>hexo server
+</code></pre>
+<p>参数：<br>-p, –port    重设端口<br>-s, –static    只使用静态文件<br>-l, –log    启动日记记录，使用覆盖记录格式</p>
+<p>deploy 部署网站</p>
+<pre><code>hexo deploy
+</code></pre>
+<p>参数：<br>g, –generate    部署之前预先生成静态文件</p>
+<p>clean 除缓存文件 (db.json) 和已生成的静态文件 (public)</p>
+<pre><code>hexo clean
+</code></pre>
+
+        <h5 id="2-搭建博客">
+          <a href="#2-搭建博客" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-搭建博客" class="headerlink" title="2. 搭建博客"></a>2. 搭建博客</h5>
+      
+        <h5 id="3-关于Github-Actions">
+          <a href="#3-关于Github-Actions" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-关于Github-Actions" class="headerlink" title="3. 关于Github Actions"></a>3. 关于Github Actions</h5>
+      <p>（1）github actions是什么？<br>一种持续集成服务，持续集成由很多操作组成，比如登陆远程服务器，发布内容到第三方服务等，Github把这些操作称为actions</p>
+<p>（2）基本概念</p>
+<ul>
+<li>workflow（工作流程）：持续集成一次运行的的过程，就是一个workflow</li>
+<li>job（任务）：一个 workflow 由一个或多个 jobs 构成，含义是一次持续集成的运行，可以完成多个任务</li>
+<li>step（步骤）：每个 job 由多个 step 构成，一步步完成</li>
+<li>action（动作）：每个 step 可以依次执行一个或多个命令（action）、</li>
+</ul>
+<p>（3）workflow文件<br>GitHub Actions 的配置文件叫做 workflow 文件，存放在代码仓库的.github/workflows目录<br>配置字段</p>
+<ul>
+<li><p>name<br>name字段是 workflow 的名称</p>
+</li>
+<li><p>on<br>on字段指定触发 workflow 的条件，通常是某些事件</p>
+</li>
+<li><p>on.&lt;push|pull_request&gt;.&lt;tags|branches&gt;<br>指定触发事件时，可以限定分支或标签</p>
+<pre><code>on:
+push:
+  branches:    
+    - master
+</code></pre>
+</li>
+<li><p>jobs.<job_id>.name<br>workflow 文件的主体是jobs字段，表示要执行的一项或多项任务</job_id></p>
+<pre><code>jobs:
+my_first_job:
+  name: My first job
+my_second_job:
+  name: My second job
+</code></pre>
+</li>
+<li><p>jobs.<job_id>.needs<br>needs字段指定当前任务的依赖关系，即运行顺序</job_id></p>
+<pre><code>jobs:
+job1:
+job2:
+  needs: job1
+job3:
+  needs: [job1, job2]
+</code></pre>
+</li>
+<li><p>jobs.<job_id>.runs-on<br>runs-on字段指定运行所需要的虚拟机环境。它是必填字段。目前可用的虚拟机如下</job_id></p>
+<pre><code>ubuntu-latest，ubuntu-18.04或ubuntu-16.04
+windows-latest，windows-2019或windows-2016
+macOS-latest或macOS-10.14
+</code></pre>
+</li>
+<li><p>jobs.<job_id>.steps<br>steps字段指定每个 Job 的运行步骤，可以包含一个或多个步骤。每个步骤都可以指定以下三个字段</job_id></p>
+<pre><code>jobs.&lt;job_id&gt;.steps.name：步骤名称。
+jobs.&lt;job_id&gt;.steps.run：该步骤运行的命令或者 action。
+jobs.&lt;job_id&gt;.steps.env：该步骤所需的环境变量。
+</code></pre>
+
+        <h5 id="4-部署到ECS">
+          <a href="#4-部署到ECS" class="heading-link"><i class="fas fa-link"></i></a><a href="#4-部署到ECS" class="headerlink" title="4. 部署到ECS"></a>4. 部署到ECS</h5>
+      <p>（1）购买一台ECS服务器</p>
+</li>
+</ul>
+<p>（2）创建一个用户</p>
+<p>（3）设置用户免密码登陆</p>
+<p>（4）执行github actions上传代码到ECS</p>
+<p>（5）申请域名</p>
+<p>（6）配置nginx</p>
+<p>（7）设置ECS</p>
+<p>（8）配置https</p>
+<p>（9）安全防护</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/29/hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" data-id="ckwou9u5j000a9hwn90fvbfij" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-vue原理初探" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/06/29/vue%E5%8E%9F%E7%90%86%E5%88%9D%E6%8E%A2/" class="article-date">
+  <time datetime="2021-06-29T06:57:18.000Z" itemprop="datePublished">2021-06-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/06/29/vue%E5%8E%9F%E7%90%86%E5%88%9D%E6%8E%A2/">vue原理初探</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="1-先看一张图"><a href="#1-先看一张图" class="headerlink" title="1.先看一张图"></a>1.先看一张图</h5><p><img src="/2021/06/29/vue%E5%8E%9F%E7%90%86%E5%88%9D%E6%8E%A2/vue%E5%8E%9F%E7%90%861.png" alt="vue原理"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/06/29/vue%E5%8E%9F%E7%90%86%E5%88%9D%E6%8E%A2/" data-id="ckxedq6200001w518a8404oav" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-react面试题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/05/20/react%E9%9D%A2%E8%AF%95%E9%A2%98/" class="article-date">
+  <time datetime="2021-05-20T06:12:06.000Z" itemprop="datePublished">2021-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/20/react%E9%9D%A2%E8%AF%95%E9%A2%98/">react面试题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="1-React生命周期？"><a href="#1-React生命周期？" class="headerlink" title="1. React生命周期？"></a>1. React生命周期？</h5><p>1）componentWillMount   在渲染之前执行，在客户端和服务器端都会执行<br>2) componentDidMount    仅在第一次渲染后在客户端执行<br>3) componentWillReceiveProps()  当从父类接收到 props 并且在调用另一个渲染器之前调用<br>4) shouldComponentUpdate()  根据特定条件返回 true 或 false。如果你希望更新组件，请返回true 否则返回 false。默认情况下，它返回 false<br>5) componentWillUpdate()    在 DOM 中进行渲染之前调用<br>6) componentDidUpdate() 在渲染发生后立即调用<br>7) componentWillUnmount()   从 DOM 卸载组件后调用。用于清理内存空间</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/20/react%E9%9D%A2%E8%AF%95%E9%A2%98/" data-id="ckwou9u61000l9hwn5iw9bcsc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-快速学会echarts" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/20/%E5%BF%AB%E9%80%9F%E5%AD%A6%E4%BC%9Aecharts/" class="article-date">
+  <time datetime="2021-02-20T06:49:37.000Z" itemprop="datePublished">2021-02-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/20/%E5%BF%AB%E9%80%9F%E5%AD%A6%E4%BC%9Aecharts/">快速学会echarts</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>使用步骤<br>(1）引入echarts.js文件<br>(2) 准备一个呈现图表的盒子<br>(3）初始化echarts实例对象<br>(4）准备配置项<br>(5）将配置设置给echarts实例对象</li>
+</ol>
+<p>2.演示代码</p>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;meta chartset=&quot;utf-8&quot;&gt;
+// 步骤1:引入echarts.js文件
+&lt;script src=“lib/echarts.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!— 步骤2:准备一个呈现图标的盒子 --&gt;
+&lt;div id=&quot;app&quot; style=&quot;width: 600px; height: 400px&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+    &lt;!--步骤3: 初始化实例对象--&gt;
+    var mCharts = echarts.init(document.getElementById(‘app’)
+    &lt;!--步骤4: 准备配置—&gt;
+    var options = &#123;
+        xAxis: &#123;
+            type: ‘category’,
+            data: [‘carr’, ‘jack’, ‘lily&#39;]
+        &#125;,
+        yAxis: &#123;
+            type: ‘value&#39;
+        &#125;,
+        series: [
+            &#123;
+                name: ‘语文’,
+                type: ‘bar’,
+                data: [90, 80, 70]
+            &#125;
+        ]
+    &#125;
+    &lt;!—步骤5: 将配置项设置给echarts实例—&gt;
+    mCharts.setOption(option)
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ol start="3">
+<li>配置说明<br>xAxis   // 类目轴<br>yAxis   // 数值轴<br>series  // 系列列表<br>title   // 图表标题<br>tooltip // 鼠标滑过或点击柱时的提示<br>toolbox // 导出、重置、视图<br>legend  // 图例</li>
+</ol>
+<p>// 配置演示</p>
+<pre><code>// 图表标题
+title: &#123;
+    text: &#39;成绩展示&#39;,
+    textStyle: &#123;
+        color: &#39;red&#39;,
+    &#125;,
+    borderWidth: 5,
+    left: 30,
+    top: 10
+&#125;
+
+// 鼠标滑过或点击柱时的提示
+tooltip: &#123;
+    trigger: &#39;item&#39; | &#39;axis&#39;,   // 触发类型
+    triggerOn: &#39;mouseover&#39; | &#39;click&#39;    // 触发时机
+    formatter: &#39;&#123;a&#125;的成绩是&#123;b&#125;&#39; // 自定义显示类容
+&#125;
+
+// 图例
+legend: &#123;
+    data: [‘语文’, &#39;数学&#39;]
+&#125;
+</code></pre>
+<ol start="4">
+<li><p>配置柱状图</p>
+<pre><code>var options = &#123;
+ title: &#123;
+     text: &#39;柱状图&#39;
+ &#125;,
+ tooltip: &#123;&#125;,
+ legend: &#123;
+     data:[&#39;销量&#39;]
+ &#125;,
+ xAxis: &#123;
+     data: [&quot;衬衫&quot;,&quot;羊毛衫&quot;,&quot;雪纺衫&quot;,&quot;裤子&quot;,&quot;高跟鞋&quot;,&quot;袜子&quot;]
+ &#125;,
+ yAxis: &#123;&#125;,
+ series: [&#123;
+     name: &#39;销量&#39;,
+     type: &#39;bar&#39;,
+     data: [5, 20, 36, 10, 10, 20]
+ &#125;]
+&#125;
+</code></pre>
+<p><img src="/2021/02/20/%E5%BF%AB%E9%80%9F%E5%AD%A6%E4%BC%9Aecharts/bar.png" alt="效果展示"></p>
+</li>
+<li><p>配置折线图</p>
+<pre><code>var options = &#123;
+ title: &#123;
+     text: &#39;折线图&#39;
+ &#125;,
+ xAxis: &#123;
+     type: &#39;category&#39;,
+     // 是否贴紧Y轴边缘
+     boundaryGap: false,
+     data: [&#39;一月&#39;, &#39;二月&#39;, &#39;三月&#39;]
+ &#125;,
+ yAxis: &#123;
+     // 对与值比较大，而相差又比较小的值，会显得折线波动不明显，将scale设为true，会以最小值作为起始值
+     scale: true
+ &#125;,
+ series: [
+     &#123;
+         type: &#39;line&#39;,
+         data: [3000, 2880, 4000],
+         markPoint: &#123;
+             // 显示最大最小值
+             data: [
+                 &#123;
+                     type: &#39;max&#39;
+                 &#125;,
+                 &#123;
+                     type: &#39;min&#39;
+                 &#125;
+             ]
+         &#125;,
+         markLine: &#123;
+             // 显示平均值
+             data: [
+                 &#123;
+                     type: &#39;average&#39;
+                 &#125;
+             ]
+         &#125;,
+         // 标记指定区间
+         markArea: &#123;
+             data: [
+                 [
+                     &#123;
+                         xAxis: &#39;一月&#39;
+                     &#125;,
+                     &#123;
+                         xAxis: &#39;二月&#39;
+                     &#125;
+                 ]
+             ]
+         &#125;,
+         // 将折线变为平滑曲线
+         smooth: true,
+         // 折现样式 color: 颜色 type: solid 实线 dashed 点线 
+         lineStyle: &#123;
+             color: &#39;green&#39;,
+             type: &#39;dashed&#39;
+         &#125;,
+         // 折线区间填充样式
+         areaStyle: &#123;
+             color: &#39;pink&#39;
+         &#125;
+     &#125;
+ ]
+&#125;
+</code></pre>
+<p><img src="/2021/02/20/%E5%BF%AB%E9%80%9F%E5%AD%A6%E4%BC%9Aecharts/line.png" alt="效果展示"></p>
+</li>
+<li><p>配置散点图<br>```</p>
+</li>
+</ol>
+<pre><code>
+7. 配置饼图
+</code></pre>
+<p>var options = {<br>    title: {<br>        text: ‘饼图’<br>    },<br>    series: [<br>        {<br>            type: ‘pie’,<br>            data: [<br>                {<br>                    name: ‘淘宝’,<br>                    value: 1000<br>                },<br>                {<br>                    name: ‘京东’,<br>                    value: 1300<br>                },<br>                {<br>                    name: ‘拼多多’,<br>                    value: 1200<br>                },<br>            ],<br>            laebl: {</p>
+<pre><code>        &#125;,
+        // radius: 20,
+        // radius: [&#39;50%&#39;, &#39;70%&#39;],  // 设为圆环图，第一个是内圆半径，第二个是外圆半径
+        roseType: &#39;radius&#39;  // 设为南丁格尔图
+    &#125;
+]
+</code></pre>
+<p>}</p>
+<pre><code>![效果展示](pie.png)
+
+8. 配置雷达图
+</code></pre>
+<pre><code>
+9. 配置仪表盘
+</code></pre>
+<pre><code>
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/20/%E5%BF%AB%E9%80%9F%E5%AD%A6%E4%BC%9Aecharts/" data-id="ckxeevf440000y5wn7f729ji2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-vue面试题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/10/vue%E9%9D%A2%E8%AF%95%E9%A2%98/" class="article-date">
+  <time datetime="2021-01-10T05:56:59.000Z" itemprop="datePublished">2021-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/10/vue%E9%9D%A2%E8%AF%95%E9%A2%98/">vue面试题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="1-vue2-0生命周期有哪些？"><a href="#1-vue2-0生命周期有哪些？" class="headerlink" title="1.vue2.0生命周期有哪些？"></a>1.vue2.0生命周期有哪些？</h5><pre><code>beforeCreate    组件创建，元素dom和数据还没有初始化
+created         数据data已经初始化完成，方法可以调用，但dom未渲染
+beforeMount     dom未挂载，数据初始化已完成，但双向绑定还是显示&#123;&#123;&#125;&#125;
+mounted         dom完成挂载，一般数据请求放在这里，因为请求改变数据之后刚好渲染
+beforeUpdate    页面数据改变了都会触发
+updated         只要页面数据改变了都会触发，页面更新完毕
+beforeDestory   组件销毁之前执行
+destoryed       组件销毁
+```
+
+##### 2.v-model的实现原理？
+v-model在表单input、textarea、select等元素上创建双向数据绑定，v-model本质上是语法糖
+
+##### 3.vue响应式原理？
+数据劫持+观察者模式
+使用Object.defineProperty将属性进行劫持，数组则是通过重写数据来实现，当页面使用对应属性时，
+每个属性都拥有自己的dep属性，存在它所依赖的watcher(依赖收集)get，当属性变化后通知自己对应的watcher去更新(派发更新)set
+
+##### 4.$nextTick有什么作用？
+修改data的值后，需要立即获取dom元素的值，是获取不到的，因为vue是异步渲染的，
+需要通过$nextTick获取
+
+##### 5.v-if与v-show的区别？
+共同点：都能控制元素的显示和隐藏
+不同点：v-show的本质是利用display:none/block来控制元素的显示和隐藏
+       v-if是动态的向dom树添加或删除元素，v-if创建和删除相比v-show更消耗性能
+使用建议：如果需要频繁的切换元素建议使用v-show    
+
+##### 6.computed计算属性与methods的区别？
+computed计算属性有缓存的的功能，只有当指定数据变时，计算属性才会执行，否则否好原来的数据
+methods没有缓存功能，每次渲染都会执行
+
+##### 7.keep-alive的作用？
+keep-alive用来对组件进行缓存
+
+##### 8.组件通信的方法？
+1. props和$emit 父子组件通信
+2. $parent和$children  获取
+3. $attrs和$liteners A->B->C
+4. provide inject注入变量
+5. $refs获取组件实例
+6. EventBus兄弟组件传递数据
+7. vuex状态管理
+```
+// 父组件
+<template>
+    <child :name="childName" :changecount="getCount">
+</child></template>
+<script>
+import Child from './Child'
+export default &#123;
+    components: &#123;
+        Child
+    &#125;,
+    data () &#123;
+        return &#123;
+            childName: 'carr'
+        &#125;
+    &#125;,
+    getCount (count) &#123;
+        console.log(count)
+    &#125;
+&#125;
+</script>
+
+// 子组件
+<template>
+    <div>
+        <p>&#123;&#123;myName&#125;&#125;&lt;/p&gt;
+        &lt;button @click=&quot;changeName&quot;&gt;&#123;&#123;count&#125;&#125;&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default &#123;
+    // 父向子用props
+    props: &#123;
+        myName: &#123;
+            type: String,
+            default: &#39;&#39;
+        &#125;
+    &#125;,
+    data () &#123;
+        return &#123;
+            count: 0
+        &#125;
+    &#125;,
+    methods: &#123;
+        changeName () &#123;
+            this.count += 1
+            this.$emit(&#39;changeCount&#39;, this.count)
+        &#125;
+    &#125;
+&#125;
+&lt;/script&gt;
+</p></div></template></code></pre>
+<h5 id="9-什么是MVVM"><a href="#9-什么是MVVM" class="headerlink" title="9.什么是MVVM?"></a>9.什么是MVVM?</h5><p>M: 模型层<br>VM: 视图模型<br>V: 视图层<br>VM通过数据绑定将后端传递的数据转化成页面，通过DOM事件监听的方式将页面转换为数据传给后端</p>
+<h5 id="10-遍历为什么要使用key？"><a href="#10-遍历为什么要使用key？" class="headerlink" title="10.遍历为什么要使用key？"></a>10.遍历为什么要使用key？</h5><p>key是为Vue中Vnode的唯一标识，通过这个key，我们的diff操作可以更准确、更快速</p>
+<h5 id="11-vue中的data为什么要是一个函数？"><a href="#11-vue中的data为什么要是一个函数？" class="headerlink" title="11.vue中的data为什么要是一个函数？"></a>11.vue中的data为什么要是一个函数？</h5><p>组件的data写成一个函数，数据以函数返回值的形式定过，这样每复用一次组件，就会返回一份新的data，<br>类似于给每个组件实例创建一个私有的数据空间，让每个组件实例维护各自的数据，单纯写成对象的形式，<br>就使得所有组件实例共享一份data</p>
+<h5 id="12-v-if和v-for的优先级？"><a href="#12-v-if和v-for的优先级？" class="headerlink" title="12.v-if和v-for的优先级？"></a>12.v-if和v-for的优先级？</h5><p>v-for的优先级高于v-for</p>
+<h5 id="13-怎样理解vue单向数据流？"><a href="#13-怎样理解vue单向数据流？" class="headerlink" title="13.怎样理解vue单向数据流？"></a>13.怎样理解vue单向数据流？</h5><p>数据总是从父组件传到子组件，子组件没有权利修改父组件传过来的数据，只能请求父组件对原始数据进行<br>修改，这样会防止子组件意外改变父组件的状态，从而导致你的应用数据流向难以理解</p>
+<h5 id="14-computed和watch的区别及应用场景？"><a href="#14-computed和watch的区别及应用场景？" class="headerlink" title="14.computed和watch的区别及应用场景？"></a>14.computed和watch的区别及应用场景？</h5><p>computed是计算属性，依赖其它属性计算值，且computed的值有缓存<br>watch监听到值的变化会执行回调，在回调中可以进行一系列操作<br>计算属性一般用载模板渲染中，某个值时依赖其它属性计算而来，watch适用于观测某个值的变化去完成<br>一些复杂的业务逻辑</p>
+<h5 id="15-vue如何监测数组变化？"><a href="#15-vue如何监测数组变化？" class="headerlink" title="15.vue如何监测数组变化？"></a>15.vue如何监测数组变化？</h5><p>基于性能原因，没有用defineProperty对数组每一项进行拦截，二十选择对7种数组方法进行重写<br>push shift  pop splice  unshift sort  reverse</p>
+<h5 id="16-vue3有哪些变化？"><a href="#16-vue3有哪些变化？" class="headerlink" title="16.vue3有哪些变化？"></a>16.vue3有哪些变化？</h5><ol>
+<li>响应式原理改变，vue3使用Proxy取代vue2版本的Object.defineProperty</li>
+<li>新增了Composition API</li>
+</ol>
+<h5 id="17-虚拟DOM时什么？"><a href="#17-虚拟DOM时什么？" class="headerlink" title="17.虚拟DOM时什么？"></a>17.虚拟DOM时什么？</h5><p>在浏览器中操作DOM是很昂贵的，频繁操作DOM，会产生一定的性能问题，虚拟DOM本质时用一个原生的JS对象<br>去描述一个DOM节点，时对真实DOM的一层抽象</p>
+<h5 id="18-vue事件绑定原理？"><a href="#18-vue事件绑定原理？" class="headerlink" title="18.vue事件绑定原理？"></a>18.vue事件绑定原理？</h5><h5 id="19-vue父子组件生命周期钩子函数执行顺序"><a href="#19-vue父子组件生命周期钩子函数执行顺序" class="headerlink" title="19.vue父子组件生命周期钩子函数执行顺序"></a>19.vue父子组件生命周期钩子函数执行顺序</h5><p>Vue 的父组件和子组件生命周期钩子函数执行顺序可以归类为以下 4 部分：</p>
+<p>加载渲染过程</p>
+<p>父 beforeCreate -&gt; 父 created -&gt; 父 beforeMount -&gt; 子 beforeCreate -&gt; 子 created -&gt; 子 beforeMount -&gt; 子 mounted -&gt; 父 mounted</p>
+<p>子组件更新过程</p>
+<p>父 beforeUpdate -&gt; 子 beforeUpdate -&gt; 子 updated -&gt; 父 updated</p>
+<p>父组件更新过程</p>
+<p>父 beforeUpdate -&gt; 父 updated</p>
+<p>销毁过程</p>
+<p>父 beforeDestroy -&gt; 子 beforeDestroy -&gt; 子 destroyed -&gt; 父 destroyed</p>
+<h5 id="20-动态绑定class和style"><a href="#20-动态绑定class和style" class="headerlink" title="20.动态绑定class和style"></a>20.动态绑定class和style</h5><pre><code>// 对象语法
+&lt;div :class=&quot;&#123;&#39;active&#39;: isActive, &#39;text-danger&#39;: hasError&#125;&quot;&gt;&lt;/div&gt;
+
+// 数组语法
+&lt;div :class=&quot;[isActive ? &#39;activeClass&#39; : &#39;&#39;, &#39;errorClass&#39;]&quot;&gt;&lt;/div&gt;
+
+// 对象语法
+&lt;div :style=&quot;&#123;color: activeColor, fontSize: fontSize + &#39;px&#39;&#125;&quot;&gt;&lt;/div&gt;
+
+// 数组语法
+&lt;div :style=&quot;[styleColor, styleSize]&quot;&gt;&lt;/div&gt;
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/10/vue%E9%9D%A2%E8%AF%95%E9%A2%98/" data-id="ckwou9u66000r9hwnbaau6vc2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-css面试题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/29/css%E9%9D%A2%E8%AF%95%E9%A2%98/" class="article-date">
+  <time datetime="2020-10-29T06:25:25.000Z" itemprop="datePublished">2020-10-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/29/css%E9%9D%A2%E8%AF%95%E9%A2%98/">css面试题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="1-清除浮动的方法？"><a href="#1-清除浮动的方法？" class="headerlink" title="1.清除浮动的方法？"></a>1.清除浮动的方法？</h5><h5 id="2-关于BFC"><a href="#2-关于BFC" class="headerlink" title="2.关于BFC?"></a>2.关于BFC?</h5><p>（1）什么时BFC<br>BFC（Block Formatting Context）格式化上下文，是web页面中盒模型布局的CSS渲染模式<br>，指一个独立的渲染区域或者说是一个隔离的独立容器，如果一个元素符合触发BFC的条件，则该元素中的布局<br>不受外部影响</p>
+<p>（2）形成BFC的条件</p>
+<ul>
+<li>浮动元素：float = left | right | inherit</li>
+<li>绝对定位元素： position = absolute ｜ fixed</li>
+<li>display = inline-block ｜ table-cell ｜ table-caption</li>
+<li>overflow = hidden ｜ auto｜scroll</li>
+</ul>
+<p>（3）BFC特性</p>
+<ul>
+<li>内部的BOX会在垂直方向上一个接一个的放置</li>
+<li>垂直方向上的距离由margin决定</li>
+<li>bfc的区域不会与float的元素区域重叠</li>
+<li>计算bfc高度时，浮动元素也参与计算</li>
+<li>bfc就是页面上的一个独立容器，容器里面的子元素不会影响外面元素</li>
+</ul>
+<h5 id="3-未知宽高元素上下左右居中"><a href="#3-未知宽高元素上下左右居中" class="headerlink" title="3.未知宽高元素上下左右居中"></a>3.未知宽高元素上下左右居中</h5><h5 id="4-已知元素的上下左右居中"><a href="#4-已知元素的上下左右居中" class="headerlink" title="4.已知元素的上下左右居中"></a>4.已知元素的上下左右居中</h5><h5 id="5-display-none-和-visibility-hidden的区别？"><a href="#5-display-none-和-visibility-hidden的区别？" class="headerlink" title="5.display:none 和 visibility: hidden的区别？"></a>5.display:none 和 visibility: hidden的区别？</h5><p>display:none 元素后代以及它的所有后代元素都会隐藏，隐藏后元素无法点击，占据的空间消失</p>
+<p>visibility: hidden 隐藏元素仍需占据空间，父元素设置visibility: hidden，子元素也会<br>继承这个属性</p>
+<h5 id="6-列举css的几种单位"><a href="#6-列举css的几种单位" class="headerlink" title="6.列举css的几种单位"></a>6.列举css的几种单位</h5><p>相对长度</p>
+<ul>
+<li>em    它是描述相对于应用在当前元素的字体尺寸</li>
+<li>rem   是根 em（root em）的缩写，rem作用于非根元素时，相对于根元素字体大小</li>
+<li>vh    viewpoint height，视窗高度，1vh=视窗高度的1%</li>
+<li>vw    viewpoint width，视窗宽度，1vw=视窗宽度的1%</li>
+<li>vmin  vw和vh中较小的那个</li>
+<li>vmax  vw和vh中较大的那个</li>
+<li>%     相对父元素   </li>
+</ul>
+<p>绝对长度</p>
+<ul>
+<li>cm    厘米</li>
+<li>mm    毫米</li>
+<li>in    英寸</li>
+<li>px    像素</li>
+<li>pt    point，大约1/72英寸</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/29/css%E9%9D%A2%E8%AF%95%E9%A2%98/" data-id="ckwou9u5a00039hwn9ei4f1sf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-javascript入门教程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/30/javascript%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" class="article-date">
+  <time datetime="2020-01-30T15:13:02.000Z" itemprop="datePublished">2020-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/30/javascript%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/">javascript入门教程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="1-关于javascript"><a href="#1-关于javascript" class="headerlink" title="1. 关于javascript"></a>1. 关于javascript</h5><pre><code>JavaScript 是互联网上最流行的脚本语言
+</code></pre>
+<h5 id="2-历史版本"><a href="#2-历史版本" class="headerlink" title="2. 历史版本"></a>2. 历史版本</h5><pre><code>1997    ECMAScript1
+1998    ECMAScript2
+1999    ECMAScript3
+2009    ECMAScript5
+2011    ECMAScript5.1
+2015    ECMAScript6
+2016    ECMAScript7
+</code></pre>
+<h5 id="3-数据类型"><a href="#3-数据类型" class="headerlink" title="3. 数据类型"></a>3. 数据类型</h5><p>   值类型（基本类型）：字符串（String）、数字(Number)、布尔(Boolean)、对空（Null）、未定义（Undefined）、Symbol</p>
+<p>   引用数据类型：对象(Object)、数组(Array)、函数(Function) </p>
+<p>   null表示一个空对象引用<br>   undefined表示未定义、未初始化</p>
+<pre><code>// null与undefined值相等，但类型不等
+null === undefined   // false
+null == undefined   // true
+</code></pre>
+<h5 id="4-条件语句"><a href="#4-条件语句" class="headerlink" title="4. 条件语句"></a>4. 条件语句</h5><pre><code>if 
+if...else
+if...else...if
+switch  
+</code></pre>
+<pre><code>switch (n) &#123;
+    case 1:
+        执行代码块 1
+        break;
+    case 2:
+        执行代码块 2
+        break;
+    default: 
+        与 case 1 和 case 2 不同时执行的代码
+&#125;
+</code></pre>
+<ol start="5">
+<li>循环语句<br>for<br>for/in<br>while<br>do/while</li>
+</ol>
+<pre><code>for (语句 1; 语句 2; 语句 3) &#123;
+    被执行的代码块
+&#125;
+
+var person=&#123;fname:&quot;Bill&quot;,lname:&quot;Gates&quot;,age:56&#125;; 
+ 
+for (x in person)  // x 为属性名
+&#123;
+    txt=txt + person[x];
+&#125;
+
+while (条件)
+&#123;
+    需要执行的代码
+&#125;
+
+do
+&#123;
+    需要执行的代码
+&#125;
+while (条件)
+</code></pre>
+<h5 id="6-typeof"><a href="#6-typeof" class="headerlink" title="6. typeof"></a>6. typeof</h5><p>作用：判断变量数据类型，可判断string、number、boolean、undefined、function、object</p>
+<pre><code>typeof &#39;abc&#39;    // string
+typeof 12   // number
+typeof true // boolean
+typeof null // object
+typeof function fn(a, b) =&gt; &#123;return a + b&#125;  // function
+typeof [1,2,3]  // object
+</code></pre>
+<h5 id="7-正则表达式"><a href="#7-正则表达式" class="headerlink" title="7. 正则表达式"></a>7. 正则表达式</h5><p>   正则表达式是由一个字符序列形成的搜索模式</p>
+<h5 id="8-变量提升"><a href="#8-变量提升" class="headerlink" title="8. 变量提升"></a>8. 变量提升</h5><p>JavaScript 中，函数及变量的声明都将被提升到函数的最顶部，变量可以在使用后声明</p>
+<pre><code>x = 5; // 变量 x 设置为 5
+
+elem = document.getElementById(&quot;demo&quot;); // 查找元素
+elem.innerHTML = x;                     // 在元素中显示 x
+
+var x; // 声明 x
+</code></pre>
+<h5 id="9-this关键字"><a href="#9-this关键字" class="headerlink" title="9. this关键字"></a>9. this关键字</h5><pre><code>面向对象语言中 this 表示当前对象的一个引用
+</code></pre>
+<p>（1）在方法中，this 表示该方法所属的对象。<br>（2）如果单独使用，this 表示全局对象。<br>（3）在函数中，this 表示全局对象。<br>（4）在函数中，在严格模式下，this 是未定义的(undefined)。<br>（5）在事件中，this 表示接收事件的元素。<br>（6）类似 call() 和 apply() 方法可以将 this 引用到任何对象。</p>
+<pre><code>// 单独使用this，指向全局对象
+var x = this
+console.log(this)   // Window
+
+// 对象方法中使用this，指向它所在方法的对象
+var person = &#123;
+    name: &#39;carr&#39;,
+    showName: function () &#123;
+        console.log(this.name)  // carr
+    &#125;
+&#125;
+
+// 函数中使用this，严格模式下指向undefined，非严格模式下指向全局对象
+function fn () &#123;
+    console.log(this)   // Window
+&#125;
+function fn () &#123;
+    &#39;use strict&#39;;
+    console.log(this)
+&#125;
+
+// 事件中的this，指向接受事件的HTML元素
+&lt;button onClick=&quot;this.style.display=&#39;none&#39;&quot;&gt;&lt;/button&gt;
+
+// 使用call改变this指向
+var person1 = &#123;
+  fullName: function() &#123;
+    return this.firstName + &quot; &quot; + this.lastName;
+  &#125;
+&#125;
+var person2 = &#123;
+  firstName:&quot;John&quot;,
+  lastName: &quot;Doe&quot;,
+&#125;
+person1.fullName.call(person2);  // 返回 &quot;John Doe&quot;
+</code></pre>
+<h5 id="10-函数"><a href="#10-函数" class="headerlink" title="10. 函数"></a>10. 函数</h5><p>（1）函数声明</p>
+<pre><code>function fn (a, b) &#123; return a + b &#125;
+</code></pre>
+<p>(2) 函数表达式</p>
+<pre><code>var fn = function (a, b) &#123; return a + b &#125;
+</code></pre>
+<p>(3) 函数提升<br>函数可以在声明之前调用</p>
+<pre><code>fn()
+function fn (a, b) &#123;
+    return a + b
+&#125;
+</code></pre>
+<p>(4) 自执行函数</p>
+<pre><code>(function())(
+    console.log(&#39;hello&#39;)
+)
+</code></pre>
+<p>(5) 函数是对象<br>函数有arguments属性，它是包含所有参数的数组</p>
+<pre><code>function fn (a, b) &#123;
+    return arguments.length
+&#125;
+</code></pre>
+<p>(6) 箭头函数<br>箭头函数没有自己的this，箭头函数中的this和外层this的值一样<br>箭头函数没有arguments属性<br>箭头函数不能作为构造函数</p>
+<p>(7) 默认参数</p>
+<pre><code>// ES5设置默认参数
+function fn (x, y) &#123;
+    y = y || 0
+&#125;
+
+// ES6设置默认参数
+function fn (a, b = 0) &#123;
+    return a + b
+&#125;
+</code></pre>
+<p>(8) 闭包</p>
+<pre><code>var add = (function () &#123;
+    var counter = 0
+    return function () &#123;
+        return counter += 1
+    &#125;
+&#125;)()
+</code></pre>
+<h5 id="13-面向对象"><a href="#13-面向对象" class="headerlink" title="13. 面向对象"></a>13. 面向对象</h5><p>(1)原型</p>
+<p>(2)原型链</p>
+<p>(3)继承</p>
+<h5 id="14-String"><a href="#14-String" class="headerlink" title="14. String"></a>14. String</h5><p>(1) indexOf // 返回字符串中某一个指定的字符首次出现的位置</p>
+<pre><code>var str = &#39;Hello world, wclcome to the universe&#39;
+var n = str.indexOf(&#39;welcome&#39;)
+</code></pre>
+<p>(2) match</p>
+<p>(3) replace()</p>
+<p>(4) toUpperCase() / toLowerCase()</p>
+<p>(5) split()</p>
+<p>(6) slice()</p>
+<p>(7) search()</p>
+<p>(8) substr()</p>
+<p>(9) valueOf()</p>
+<p>(10) charAt()</p>
+<p>(11) charCodeAt()</p>
+<h5 id="15-Number"><a href="#15-Number" class="headerlink" title="15. Number"></a>15. Number</h5><h5 id="16-Array"><a href="#16-Array" class="headerlink" title="16. Array"></a>16. Array</h5><h5 id="17-Boolean"><a href="#17-Boolean" class="headerlink" title="17. Boolean"></a>17. Boolean</h5><h5 id="18-Math"><a href="#18-Math" class="headerlink" title="18. Math"></a>18. Math</h5><h5 id="19-Date"><a href="#19-Date" class="headerlink" title="19. Date"></a>19. Date</h5><h5 id="20-RegExp"><a href="#20-RegExp" class="headerlink" title="20. RegExp"></a>20. RegExp</h5><h5 id="21-DOM"><a href="#21-DOM" class="headerlink" title="21. DOM"></a>21. DOM</h5><p>(1) DOM(Document object Model) 文档对象模型<br>(2) DOM事件<br>onload/onunload 进入或离开页面时触发<br>onchange<br>onmouseover<br>onmouseout<br>onmousedown<br>onmouseup<br>onclik</p>
+<p>(3) 事件绑定<br>addEventListener    // 事件绑定<br>removeEventListener // 解除事件绑定</p>
+<pre><code>element.addEventListener(&#39;click&#39;, function () &#123;
+    console.log(&#39;hello world&#39;)
+&#125;)
+</code></pre>
+<p>(4)事件冒泡和事件捕获<br>事件传递的方式有两种：事件冒泡或事件捕获<br>在冒泡中，内部元素的事件会先触发。然后再触发外部元素<br>在捕获中，外部元素的事件会被先触发，然后才会触发内部元素</p>
+<p>(5)向Window对象添加事件</p>
+<pre><code>window.addEvenetListener(&#39;resize&#39;, function () &#123;
+    ...
+&#125;)
+</code></pre>
+<h5 id="22-BOM"><a href="#22-BOM" class="headerlink" title="22. BOM"></a>22. BOM</h5><p>(1) BOM(Browser object Model) 浏览器对象模型 </p>
+<p>(2) window尺寸<br>window.innerHeight  浏览器窗口的内部高度(包括滚动条)<br>window.innerWidth - 浏览器窗口的内部宽度(包括滚动条)</p>
+<p>(3)window方法<br>window.open()   打开新窗口<br>window.close()  关闭当前窗口<br>window.moveTo() 移动当前窗口<br>window.resizeTo()  调整当前窗口的尺寸</p>
+<p>(4)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/01/30/javascript%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" data-id="ckwou9u5p000c9hwn0kuud8t6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/12/01/%E4%B8%89%E5%88%86%E9%92%9F%E4%BA%86%E8%A7%A3gitactions/">三分钟了解Github Actions</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">前端工程化最佳实践</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/31/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8react/">快速入门react</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/31/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8vue/">快速入门vue</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/30/react-hooks/">react-hooks</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Carr Lu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Carr&#39;Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="分享前端开发知识">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Carr&#39;Blog">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Carr&#39;Blog">
+<meta property="og:description" content="分享前端开发知识">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Carr Lu">
+<meta property="article:tag" content="web前端 前端开发 html css js javascript vue react 小程序 node koa express mysql">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Carr&#39;Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Carr&#39;Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-三分钟了解gitactions" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/12/01/%E4%B8%89%E5%88%86%E9%92%9F%E4%BA%86%E8%A7%A3gitactions/" class="article-date">
+  <time datetime="2021-12-01T06:48:44.000Z" itemprop="datePublished">2021-12-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/01/%E4%B8%89%E5%88%86%E9%92%9F%E4%BA%86%E8%A7%A3gitactions/">三分钟了解Github Actions</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="1-何为Github-Actions"><a href="#1-何为Github-Actions" class="headerlink" title="1. 何为Github Actions?"></a>1. 何为Github Actions?</h5><p>简单解释就是在Github中可以直接引用别人写好的集成脚本，使自己的项目快速实现持续集成</p>
+<h5 id="2-配置字段"><a href="#2-配置字段" class="headerlink" title="2. 配置字段"></a>2. 配置字段</h5><ul>
+<li>workflow （工作流程）：持续集成一次运行的过程，就是一个 workflow</li>
+<li>job （任务）：一个 workflow 由一个或多个 jobs 构成，含义是一次持续集成的运行，可以完成多个任务</li>
+<li>step（步骤）：每个 job 由多个 step 构成，一步步完成</li>
+<li>action （动作）：每个 step 可以依次执行一个或多个命令（action）</li>
+</ul>
+<h5 id="3-最佳实践"><a href="#3-最佳实践" class="headerlink" title="3. 最佳实践"></a>3. 最佳实践</h5><p>需求：每次触发更新机制后将代码自动打包并上传部署到服务器</p>
+<pre><code>name: deploy for dev
+on:
+    push: 
+        branchs:
+            - master
+        paths:
+            - &#39;.github/workflows&#39;
+            - &#39;src/**&#39;
+jobs:
+    test:
+        runs-on: ubuntu-lastest
+        steps:
+            - users: actions/checkout
+            - name: set ssh key
+                run: |
+                    mkdir -p ~/.ssh/
+                    echo &quot;$&#123;&#123;secrets.MAC_LOCAL&#125;&#125;&quot; &gt; ~/.ssh/id_rsa
+                    chmod 600 ~/.ssh/id_rsa
+                    ssh-keyscan &quot;39.100.253.134&quot; &gt;&gt; ~/.ssh/known_hosts
+            - name: deploy
+                ssh carr@39.100.253.134
+                cd /home/carr
+                git remote add origin https://github.com:$&#123;&#123;secrets.MAC_LOCAL&#125;&#125;@github.com/lzjdp/automation
+                git pull origin master
+                git remote remove origin
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/12/01/%E4%B8%89%E5%88%86%E9%92%9F%E4%BA%86%E8%A7%A3gitactions/" data-id="ckxeg8wki0002y5wn5jf7ewok" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端工程化最佳实践" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/11/20/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" class="article-date">
+  <time datetime="2021-11-20T08:15:01.000Z" itemprop="datePublished">2021-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/20/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">前端工程化最佳实践</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="1-历史变革"><a href="#1-历史变革" class="headerlink" title="1. 历史变革"></a>1. 历史变革</h5><p>（1）前端的历史变革</p>
+<ul>
+<li>B/S 架构兴起，进而有了前端、后端之分</li>
+<li>随着前端复杂度的上升，模块复用、实践规范越来越重要</li>
+<li>为了管理和简化前端开发过程，前端框架、自动化、构建系统应运而生并发展迅猛</li>
+<li>基于行业最佳实践，开箱即用的框架（如dva）、工具体系等逐渐建立起来</li>
+</ul>
+<p>（2）工程化体系的历史衍变</p>
+<ul>
+<li>前端框架：插件化（jQuery） -&gt; 模块化（RequireJS） -&gt; 组件化（React</li>
+<li>构建工具：任务化（grunt/gulp） -&gt; 系统化（webpack）</li>
+<li>CI/CD：工具化（Jenkins） -&gt; 自动化（Web Hook）</li>
+</ul>
+<h5 id="2-前端开发工作流"><a href="#2-前端开发工作流" class="headerlink" title="2. 前端开发工作流"></a>2. 前端开发工作流</h5><ul>
+<li>开发</li>
+<li>测试</li>
+<li>构建</li>
+<li>部署</li>
+<li>监控</li>
+</ul>
+<h5 id="3-最佳实践"><a href="#3-最佳实践" class="headerlink" title="3. 最佳实践"></a>3. 最佳实践</h5><p>（1）开发阶段</p>
+<ul>
+<li>脚手架：创建前端应用的目录结构，并生成样板代码</li>
+<li>公共库：维护着可复用的 UI 组件、工具模块等公共资源</li>
+<li>包管理器：引入第三方库/组件，并跟踪管理这些依赖项</li>
+<li>编辑器：提供语法高亮、智能提示、引用跳转等功能，提升开发体验</li>
+<li>构建工具：提供语法校验、编译、打包、DevServer 等功能，简化工作流</li>
+<li>调试套件：提供预览、DevTools、Mock、性能分析诊断等调试功能，加速修改-验证的主循环</li>
+</ul>
+<p>（2）测试阶段</p>
+<ul>
+<li>单元测试框架：提供针对组件、逻辑的测试支持</li>
+<li>静态扫描工具：从代码质量、构建产物质量、最佳实践/开发规约等多个维度做静态检查</li>
+<li>自动化测试工具：针对 UI 效果和业务流程，提供测试支持</li>
+<li>性能测试工具：监测并统计出相对准确的性能数据</li>
+</ul>
+<p>（3）构建阶段</p>
+<ul>
+<li>打包脚本：在语法校验、编译、打包的基础上，进行合并、压缩、代码拆分、图片处理、SSR等极限优化</li>
+<li>构建服务：支持多任务并行打包、通知</li>
+</ul>
+<p>（4）部署阶段</p>
+<ul>
+<li>发布平台：将前端资源上传至 CDN 或 SSR 渲染服务，或者以离线包的形式集成到移动客户端</li>
+<li>迭代管理平台：提供 CI/CD 支持</li>
+</ul>
+<p>（5）监控阶段</p>
+<ul>
+<li>埋点平台：统计、分析业务数据，跟踪性能指标</li>
+<li>监控平台：观察线上的异常信息，包括报错、白屏、流量异常等</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/11/20/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" data-id="ckxe93wqx0000w518elj746rb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-快速入门react" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/10/31/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8react/" class="article-date">
+  <time datetime="2021-10-31T13:22:53.000Z" itemprop="datePublished">2021-10-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/31/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8react/">快速入门react</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>React是什么？<br>React 是一个声明式，高效且灵活的用于构建用户界面的 JavaScript 库</p>
+</li>
+<li><p>JSX<br>react提供的语法糖，可以在js文件中插入html片段<br>（1）jsx中的class应该写成className</p>
+<pre><code>&lt;input className=&quot;username&quot; /&gt;
+</code></pre>
+</li>
+</ol>
+<p>（2）注释</p>
+<pre><code>&#123;/* 注释内容 */&#125;
+</code></pre>
+<ol start="3">
+<li>组件和props<br>（1）类组件<pre><code>import React from &#39;react&#39;
+class MyComponent extends Ract.Component &#123;
+ render () &#123;
+     return &#123;
+         &lt;div&gt;Hello React&lt;/div&gt;
+     &#125;
+ &#125;
+&#125;
+</code></pre>
+</li>
+</ol>
+<p>（2）函数组件</p>
+<pre><code>function MyComponent () &#123;
+    return &lt;div&gt;Hello React&lt;/div&gt;
+&#125;
+</code></pre>
+<p>（3）组件状态</p>
+<pre><code>import React from &#39;react&#39;
+class MyComponent extends React.Component &#123;
+    this.state = &#123;
+        num: 0
+    &#125;
+    render () &#123;
+        return &#123;
+            &lt;p&gt;&#123;this.state.num&#125;&lt;/p&gt;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<ol start="3">
+<li><p>生命周期<br>componentDidMount   在组件已经被渲染到 DOM 中后运行<br>componentWillUnmount</p>
+</li>
+<li><p>state</p>
+<pre><code>class Clock extends React.Component &#123;
+ constructor (props) &#123;
+     super(props)
+     this.state = &#123;date: new Date()&#125;
+ &#125;
+ componentDidMount () &#123;
+     this.timerID = setInterval(() =&gt; &#123;
+         this.tick()
+     &#125;,1000)
+ &#125;
+ componentWillUnmount () &#123;
+     clearInterval(this.timerID)
+ &#125;
+ tick () &#123;
+     this.setState(&#123;
+         date: new Date()
+     &#125;)
+ &#125;
+ render () &#123;
+     return &#123;
+         &lt;div&gt;
+             &lt;h2&gt;&#123;this.state.date&#125;&lt;/h2&gt;
+         &lt;/div&gt;
+     &#125;
+ &#125;
+&#125;
+</code></pre>
+<p>总结：<br>1）不要直接修改State</p>
+</li>
+</ol>
+<ol start="2">
+<li>State的更新可能是异步的<br>3）State的更新会被合并</li>
+</ol>
+<ol start="5">
+<li>事件处理<pre><code>class Toggle extends React.Component &#123;
+ constructor (props) &#123;
+     super(props)
+     this.state = &#123;isToggleOn: true&#125;
+     // 为了在回调中使用 `this`，这个绑定是必不可少的
+     this.handlerClick = this.handleClick.bind(this)
+ &#125;
+ handlerClick () &#123;
+     this.setState(state =&gt; &#123;
+         isToggleOn: !state.isToggleOn
+     &#125;)
+ &#125;
+ render () &#123;
+     return &#123;
+         &lt;button onClick=&#123;&#125;&gt;&lt;/button&gt;
+     &#125;
+ &#125;
+&#125;
+</code></pre>
+在 JavaScript 中，class 的方法默认不会绑定 this。如果你忘记绑定 this.handleClick 并把它传入了 onClick，当你调用这个函数的时候 this 的值为 undefined</li>
+</ol>
+<p>解决this绑定问题的两种方法：<br>方法一：</p>
+<pre><code>class LoginButton extends React.Component &#123;
+    // 此语法确保 `handleClick` 内的 `this` 已被绑定。
+    // 注意: 这是 *实验性* 语法。
+    handlerClick = () =&gt; &#123;
+        console.log(this)
+    &#125;
+    render () &#123;
+        return &#123;
+            &lt;button onClick=&#123;this.handlerClick&#125;&gt;
+                &#123;this.state.isToggleOn ? &#39;ON&#39; : &#39;OFF&#39;&#125;
+            &lt;/button&gt;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>方法二：</p>
+<pre><code>class LoggingButton extends React.Component &#123;
+  handleClick() &#123;
+    console.log(&#39;this is:&#39;, this);
+  &#125;
+
+  render() &#123;
+    // 此语法确保 `handleClick` 内的 `this` 已被绑定。
+    return (
+      &lt;button onClick=&#123;() =&gt; this.handleClick()&#125;&gt;
+        Click me
+      &lt;/button&gt;
+    );
+  &#125;
+&#125;
+</code></pre>
+<p>向事件处理程序传递参数</p>
+<pre><code>&lt;button onClick=&#123;(e) =&gt; this.deleteRow(id, e)&#125;&gt;Delete Row&lt;/button&gt;
+&lt;button onClick=&#123;this.deleteRow.bind(this, id)&#125;&gt;Delete Row&lt;/button&gt;
+</code></pre>
+<p>注意事项：<br>1）React 事件的命名采用小驼峰式（camelCase），而不是纯小写<br>2）使用 JSX 语法时你需要传入一个函数作为事件处理函数，而不是一个字符串</p>
+<ol start="8">
+<li><p>条件渲染</p>
+</li>
+<li><p>列表</p>
+</li>
+<li><p>高阶组件</p>
+</li>
+<li><p>状态提升</p>
+</li>
+<li><p>表单</p>
+</li>
+<li><p>context</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/31/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8react/" data-id="ckxee3qmg0004w5186tes87hk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-快速入门vue" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/10/31/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8vue/" class="article-date">
+  <time datetime="2021-10-31T13:19:30.000Z" itemprop="datePublished">2021-10-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/31/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8vue/">快速入门vue</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>vue简介<br> Vue是一套用于构建用户界面的渐进式框架，Vue能够为复杂的单页面应用提供驱动</p>
+</li>
+<li><p>安装<br>（1）CDN引入</p>
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2&quot;&gt;&lt;/script&gt;
+</code></pre>
+</li>
+</ol>
+<p>（2）脚手架工具vue-cli</p>
+<pre><code>// 全局安装vue-cli
+npm install vue-cli -g
+
+// create vue project
+vue init wepack demo-name   // for vue-cli@2.x
+
+or
+
+vue create  // for vue-cli@3.x
+</code></pre>
+<ol start="3">
+<li><p>Vue实例</p>
+<pre><code>var data = &#123;a: 1&#125;
+var vm = new Vue(&#123;
+ data: data
+&#125;)
+</code></pre>
+</li>
+<li><p>生命周期<br><img src="/2021/10/31/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8vue/lifecycle.png" alt="vue生命周期"></p>
+</li>
+<li><p>插值（Mustache）<br>数据绑定最常见的形式就是使用’Mustache’语法（双大括号）的文本插值</p>
+<pre><code>&lt;span&gt;&#123;&#123;Message: &#123;&#123;msg&#125;&#125;&#125;&#125;&lt;/span&gt;
+</code></pre>
+</li>
+<li><p>指令<br>指定（Directives）是带有v-前缀的特殊attribute，指令的指责是，当表达式的值改变时，<br>将其产生的连带影响，响应式的用于DOM<br>v-on    // 缩写 :<br>v-bind  // 缩写 @<br>v-if<br>v-else<br>v-else-if<br>v-html<br>v-for<br>v-show</p>
+</li>
+<li><p>修饰符<br>.prevent</p>
+</li>
+<li><p>计算属性(computed)<br>计算属性</p>
+<pre><code>var vm = new Vue(&#123;
+ el: &#39;#app&#39;,
+ data: &#123;
+     message: &#39;Hello&#39;
+ &#125;,
+ computed: &#123;
+     reversedMessage: function () &#123;
+         // this指向vm实例
+         return this.message.split(&#39;&#39;).reverse().join(&#39;&#39;)
+     &#125;
+ &#125;
+&#125;)
+</code></pre>
+</li>
+<li><p>侦听器</p>
+</li>
+</ol>
+<pre><code>&lt;div id=&quot;app&quot;&gt;
+    &lt;p&gt;
+        Ask a yes/no question
+        &lt;input v-model=&quot;question&quot; /&gt;
+    &lt;/p&gt;
+&lt;/div&gt;
+
+var vm = new Vue(&#123;
+    el: &#39;#app&#39;,
+    data () &#123;
+        return &#123;
+            question: &#39;&#39;,
+            answer: &#39;I cannot give you an answer until you ask a question!&#39;
+        &#125;
+    &#125;,
+    created () &#123;
+        this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
+    &#125;,
+    watch: &#123;
+        question: function (newQuestion, oldQuestion) &#123;
+            this.answer = &#39;Waiting for you to stop typing...&#39;
+            this.debouncedGetAnswer()
+        &#125;
+    &#125;,
+    methods: &#123;
+        getAnsswer: function () &#123;
+            if (this.question.indexOf(&#39;?&#39;) === -1) &#123;
+                this.answer = &#39;&#39;Questions usually contain a question mark. ;-)&#39;
+                return 
+            &#125;
+            this.answer = &#39;Thinking...&#39;
+            var vm = this
+            axios.get(&#39;&#39;).then(res =&gt; &#123;
+                vm.answer = _.capitalize(response.data.answer)
+            &#125;).catch(error =&gt; &#123;
+                vm.answer = &#39;Error! Could not reach the API. &#39; + error
+            &#125;)
+        &#125;
+    &#125;
+&#125;)
+</code></pre>
+<ol start="10">
+<li>class与style绑定<br>内联</li>
+</ol>
+<pre><code>&lt;div :class=&quot;&#123;active: isActive&#125;&quot;&gt;&lt;/div&gt;
+
+data: &#123;
+    isActive: true
+&#125;
+</code></pre>
+<p>对象</p>
+<pre><code>&lt;div :class=&quot;classObject&quot;&gt;&lt;/div&gt;
+
+data: &#123;
+    classObject: &#123;
+        active&quot; true,
+        &#39;text-danger&#39;: false
+    &#125;
+&#125;
+</code></pre>
+<p>计算属性</p>
+<pre><code>&lt;div :class=&quot;classObject&quot;&gt;&lt;/div&gt;
+
+data: &#123;
+    isActive: true,
+    error: null
+&#125;
+
+computed: &#123;
+    classObject: function () &#123;
+        return &#123;
+            active: this.isActive &amp;&amp; !this.error,
+            &#39;text-danger&#39;: this.error &amp;&amp; this.error.type === &#39;fatal&#39;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>数组</p>
+<pre><code>&lt;div v-bind:class=&quot;[activeClass, errorClass]&quot;&gt;&lt;/div&gt;
+
+data: &#123;
+    activeClass: &#39;active&#39;,
+    errorClass: &#39;text-danger&#39;
+&#125;
+</code></pre>
+<p>三元表达式</p>
+<pre><code>&lt;div v-bind:class=&quot;[isActive ? activeClass : &#39;&#39;, errorClass]&quot;&gt;&lt;/div&gt;
+</code></pre>
+<p>数组中使用对象</p>
+<pre><code>&lt;div v-bind:class=&quot;[&#123; active: isActive &#125;, errorClass]&quot;&gt;&lt;/div&gt;
+</code></pre>
+<ol start="11">
+<li>条件渲染<br>v-if指令用于条件性地渲染一块内容</li>
+</ol>
+<pre><code>&lt;h1 v-if=&quot;awesome&quot;&gt;Vue is awesome!&lt;/h1&gt;
+&lt;h1 v-else&gt;Oh no 😢&lt;/h1&gt;
+</code></pre>
+<p>总结：<br>    不建议v-if与v-for一起使用，v-for具有比v-if更高的优先级，</p>
+<ol start="12">
+<li>列表渲染</li>
+</ol>
+<pre><code>&lt;ul&gt;
+    &lt;li v-for=&quot;item in items&quot; :key=&quot;item.message&quot;&gt;
+        &#123;&#123;item.message&#125;&#125;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>总结：<br>（1）建议给每个遍历项添加一个唯一的key，且不是下标<br>（2）不建议v-for, v-if在上同一个元素上同时使用<br>（3）v-for的优先级高于v-if</p>
+<ol start="13">
+<li>事件处理（v-on）<br>用v-on指令监听DOM事件</li>
+</ol>
+<pre><code>&lt;div id=&quot;app&quot;&gt;
+    &lt;button v-on:click=&quot;greet&quot;&gt;Greet&lt;/button&gt;
+&lt;/div&gt;
+
+var app = new Vue(&#123;
+    el: &#39;#app&#39;,
+    data: &#123;
+        name: &#39;Vue.js&#39;
+    &#125;,
+    methods: &#123;
+        greet: function (event) &#123;
+            if (event) &#123;
+                alert(event.target.tagName)
+            &#125;
+        &#125;
+    &#125;
+&#125;)
+</code></pre>
+<p>事件修饰符：<br>.stop<br>.prevent<br>.capture<br>.self<br>.once<br>.passive<br>.enter<br>.tab<br>.delete<br>.esc<br>.space<br>.up<br>.down<br>.left<br>.right</p>
+<pre><code>&lt;!-- 提交事件不再重载页面 --&gt;
+&lt;form v-on:submit.prevent=&quot;onSubmit&quot;&gt;&lt;/form&gt;
+
+&lt;!-- 修饰符可以串联 --&gt;
+&lt;a v-on:click.stop.prevent=&quot;doThat&quot;&gt;&lt;/a&gt;
+
+&lt;!-- 只有修饰符 --&gt;
+&lt;form v-on:submit.prevent&gt;&lt;/form&gt;
+
+&lt;!-- 添加事件监听器时使用事件捕获模式 --&gt;
+&lt;!-- 即内部元素触发的事件先在此处理，然后才交由内部元素进行处理 --&gt;
+&lt;div v-on:click.capture=&quot;doThis&quot;&gt;...&lt;/div&gt;
+
+&lt;!-- 只当在 event.target 是当前元素自身时触发处理函数 --&gt;
+&lt;!-- 即事件不是从内部元素触发的 --&gt;
+&lt;div v-on:click.self=&quot;doThat&quot;&gt;...&lt;/div&gt;
+</code></pre>
+<ol start="14">
+<li>表单输入绑定（v-model）<br>v-model</li>
+</ol>
+<pre><code>// 文本
+&lt;input v-model=&quot;message&quot; /&gt;
+&lt;p&gt;Message is: &#123;&#123;message&#125;&#125;&lt;/p&gt;
+
+// 复选框
+&lt;input type=&quot;checkbox&quot; id=&quot;checkbox&quot; v-model=&quot;checked&quot;&gt;
+&lt;label for=&quot;checkbox&quot;&gt;&#123;&#123; checked &#125;&#125;&lt;/label&gt;
+</code></pre>
+<p>修饰符：<br>.lazy   在“change”时而非“input”时更新<br>.trim   自动过滤用户输入的首尾空白字符<br>.number 将用户的输入值转为数值类型</p>
+<pre><code>&lt;input v-model.lazy=&quot;msg&quot;&gt;
+
+&lt;input v-model.number=&quot;age&quot; type=&quot;number&quot;&gt;
+
+&lt;input v-model.trim=&quot;msg&quot;&gt;
+</code></pre>
+<ol start="15">
+<li>组件<br>（1）组件命名</li>
+</ol>
+<ul>
+<li>使用 kebab-case</li>
+</ul>
+<pre><code>Vue.component(&#39;my-component-name&#39;, &#123; /* ... */ &#125;)
+
+/*
+当使用 kebab-case (短横线分隔命名) 定义一个组件时，你也必须在引用这个自定义元素时使用 kebab-case，例如 &lt;my-component-name&gt;
+*/ 
+</code></pre>
+<ul>
+<li>使用 PascalCase</li>
+</ul>
+<pre><code>Vue.component(&#39;MyComponentName&#39;, &#123; /* ... */ &#125;)
+
+/*
+当使用 PascalCase (首字母大写命名) 定义一个组件时，你在引用这个自定义元素时两种命名法都可以使用。也就是说 &lt;my-component-name&gt; 和 &lt;MyComponentName&gt; 都是可接受的
+*/
+</code></pre>
+<p>（2）通过props向子组件传递数据</p>
+<ul>
+<li>Prop命名</li>
+</ul>
+<pre><code>Vue.component(&#39;blog-post&#39;, &#123;
+  // 在 JavaScript 中是 camelCase 的
+  props: [&#39;postTitle&#39;],
+  template: &#39;&lt;h3&gt;&#123;&#123; postTitle &#125;&#125;&lt;/h3&gt;&#39;
+&#125;)
+
+&lt;!-- 在 HTML 中是 kebab-case 的 --&gt;
+&lt;blog-post post-title=&quot;hello!&quot;&gt;&lt;/blog-post&gt;
+</code></pre>
+<ul>
+<li>Prop类型<br>通常你希望每个 prop 都有指定的值类型，这时，你可以以对象形式列出 prop</li>
+</ul>
+<pre><code>props: [&#39;title&#39;, &#39;likes&#39;, &#39;isPublished&#39;, &#39;commentIds&#39;, &#39;author&#39;]
+
+props: &#123;
+  title: String,
+  likes: Number,
+  isPublished: Boolean,
+  commentIds: Array,
+  author: Object,
+  callback: Function,
+  contactsPromise: Promise // or any other constructor
+&#125;
+</code></pre>
+<ul>
+<li>传递静态或动态Prop<br>静态Prop</li>
+</ul>
+<pre><code>&lt;blog-post title=&quot;My journey with Vue&quot;&gt;&lt;/blog-post&gt;
+</code></pre>
+<p>动态Prop</p>
+<pre><code>&lt;!-- 动态赋予一个变量的值 --&gt;
+&lt;blog-post v-bind:title=&quot;post.title&quot;&gt;&lt;/blog-post&gt;
+
+&lt;!-- 动态赋予一个复杂表达式的值 --&gt;
+&lt;blog-post
+  v-bind:title=&quot;post.title + &#39; by &#39; + post.author.name&quot;
+&gt;&lt;/blog-post&gt;
+</code></pre>
+<p>传入数字</p>
+<pre><code>&lt;!-- 即便 `42` 是静态的，我们仍然需要 `v-bind` 来告诉 Vue --&gt;
+&lt;!-- 这是一个 JavaScript 表达式而不是一个字符串。--&gt;
+&lt;blog-post v-bind:likes=&quot;42&quot;&gt;&lt;/blog-post
+</code></pre>
+<p>传入布尔值</p>
+<pre><code>&lt;!-- 包含该 prop 没有值的情况在内，都意味着 `true`。--&gt;
+&lt;blog-post is-published&gt;&lt;/blog-post&gt;
+
+&lt;!-- 即便 `false` 是静态的，我们仍然需要 `v-bind` 来告诉 Vue --&gt;
+&lt;!-- 这是一个 JavaScript 表达式而不是一个字符串。--&gt;
+&lt;blog-post v-bind:is-published=&quot;false&quot;&gt;&lt;/blog-post&gt;
+</code></pre>
+<p>传入数组</p>
+<pre><code>&lt;!-- 即便数组是静态的，我们仍然需要 `v-bind` 来告诉 Vue --&gt;
+&lt;!-- 这是一个 JavaScript 表达式而不是一个字符串。--&gt;
+&lt;blog-post v-bind:comment-ids=&quot;[234, 266, 273]&quot;&gt;&lt;/blog-post&gt;
+</code></pre>
+<p>传入对象</p>
+<pre><code>&lt;!-- 即便对象是静态的，我们仍然需要 `v-bind` 来告诉 Vue --&gt;
+&lt;!-- 这是一个 JavaScript 表达式而不是一个字符串。--&gt;
+&lt;blog-post
+  v-bind:author=&quot;&#123;
+    name: &#39;Veronica&#39;,
+    company: &#39;Veridian Dynamics&#39;
+  &#125;&quot;
+&gt;&lt;/blog-post&gt;
+</code></pre>
+<ul>
+<li><p>单向数据流<br>所有的 prop 都使得其父子 prop 之间形成了一个单向下行绑定：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外变更父级组件的状态，从而导致你的应用的数据流向难以理，你不应该在一个子组件内部改变 prop。如果你这样做了，Vue 会在浏览器的控制台中发出警告</p>
+</li>
+<li><p>Prop验证<br>type类型：String、Number、Boolean、Array、Object、Date、Function、Symbol</p>
+</li>
+</ul>
+<pre><code>Vue.component(&#39;my-component&#39;, &#123;
+  props: &#123;
+    // 基础的类型检查 (`null` 和 `undefined` 会通过任何类型验证)
+    propA: Number,
+    // 多个可能的类型
+    propB: [String, Number],
+    // 必填的字符串
+    propC: &#123;
+      type: String,
+      required: true
+    &#125;,
+    // 带有默认值的数字
+    propD: &#123;
+      type: Number,
+      default: 100
+    &#125;,
+    // 带有默认值的对象
+    propE: &#123;
+      type: Object,
+      // 对象或数组默认值必须从一个工厂函数获取
+      default: function () &#123;
+        return &#123; message: &#39;hello&#39; &#125;
+      &#125;
+    &#125;,
+    // 自定义验证函数
+    propF: &#123;
+      validator: function (value) &#123;
+        // 这个值必须匹配下列字符串中的一个
+        return [&#39;success&#39;, &#39;warning&#39;, &#39;danger&#39;].indexOf(value) !== -1
+      &#125;
+    &#125;
+  &#125;
+&#125;)
+</code></pre>
+<p>（2）通过$emit监听子组件事件</p>
+<pre><code>// 父组件
+&lt;blog-post
+  ...
+  v-on:enlarge-text=&quot;postFontSize += 0.1&quot;
+&gt;&lt;/blog-post&gt;
+
+// 子组件
+&lt;button v-on:click=&quot;$emit(&#39;enlarge-text&#39;)&quot;&gt;
+  Enlarge text
+&lt;/button&gt;
+</code></pre>
+<ul>
+<li>$emit参数</li>
+</ul>
+<pre><code>// 父组件
+&lt;blog-post
+  ...
+  v-on:enlarge-text=&quot;onEnlargeText&quot;
+&gt;&lt;/blog-post&gt;
+
+methods: &#123;
+    onEnlargeText (enlargeAmount) &#123;
+        this.postFontSize += enlargeAmount
+    &#125;
+&#125;
+
+// 子组件
+&lt;button v-on:click=&quot;$emit(&#39;enlarge-text&#39;, 0.1)&quot;&gt;
+  Enlarge text
+&lt;/button&gt;
+</code></pre>
+<p>（3）插槽slot<br>一套内容分发的 API</p>
+<pre><code>&lt;navigation-link url=&quot;/profile&quot;&gt;
+  Your Profile
+&lt;/navigation-link&gt;
+
+// navigation-link
+&lt;a
+  v-bind:href=&quot;url&quot;
+  class=&quot;nav-link&quot;
+&gt;
+  &lt;slot&gt;&lt;/slot&gt;
+&lt;/a&gt;
+
+// 父级模板里的所有内容都是在父级作用域中编译的；子模板里的所有内容都是在子作用域中编译的。
+</code></pre>
+<ul>
+<li>具名插槽</li>
+</ul>
+<pre><code>// 定义插槽
+&lt;div class=&quot;container&quot;&gt;
+  &lt;header&gt;
+    &lt;slot name=&quot;header&quot;&gt;&lt;/slot&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;slot&gt;&lt;/slot&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;
+    &lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;
+  &lt;/footer&gt;
+&lt;/div&gt;
+
+// 使用插槽
+&lt;base-layout&gt;
+  &lt;template v-slot:header&gt;
+    &lt;h1&gt;Here might be a page title&lt;/h1&gt;
+  &lt;/template&gt;
+
+  &lt;p&gt;A paragraph for the main content.&lt;/p&gt;
+  &lt;p&gt;And another one.&lt;/p&gt;
+
+  &lt;template v-slot:footer&gt;
+    &lt;p&gt;Here&#39;s some contact info&lt;/p&gt;
+  &lt;/template&gt;
+&lt;/base-layout&gt;
+</code></pre>
+<ul>
+<li>作用域插槽</li>
+</ul>
+<pre><code>// 子组件
+&lt;span&gt;
+  &lt;slot v-bind:user=&quot;user&quot;&gt;
+    &#123;&#123; user.lastName &#125;&#125;
+  &lt;/slot&gt;
+&lt;/span&gt;
+
+// 父组件
+&lt;current-user&gt;
+  &lt;template v-slot:default=&quot;slotProps&quot;&gt;
+    &#123;&#123; slotProps.user.firstName &#125;&#125;
+  &lt;/template&gt;
+&lt;/current-user&gt;
+</code></pre>
+<p>（4）动态组件<br>总结：<br>（1）组件的data必须一个函数</p>
+<ol start="16">
+<li><p>自定义事件</p>
+</li>
+<li><p>进入离开列表过渡</p>
+</li>
+<li><p>混入</p>
+</li>
+</ol>
+<pre><code>var myMixin = &#123;
+    created: function () &#123;
+        this.hello()
+    &#125;,
+    methods: &#123;
+        hello: function () &#123;
+            console.log(&#39;hello&#39;)
+        &#125;
+    &#125;
+&#125;
+
+var Component = Vue.extend(&#123;
+    mixins: [myMixin]
+&#125;)
+</code></pre>
+<ol start="19">
+<li>自定义指令</li>
+</ol>
+<pre><code>Vue.directive(&#39;focus&#39;, &#123;
+    // / 当被绑定的元素插入到 DOM 中时……
+    inserted: function (el) &#123;
+        // 聚焦元素
+    el.focus()
+        el.focus()
+    &#125;
+&#125;)
+</code></pre>
+<p>钩子函数：<br>bind    只调用一次，指令第一次绑定到元素时调用<br>inserted    被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)<br>update  所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前<br>componentUpdated    指令所在组件的 VNode 及其子 VNode 全部更新后调用<br>unbind  只调用一次，指令与元素解绑时调用</p>
+<p>钩子函数参数<br>el：指令所绑定的元素，可以用来直接操作 DOM<br>binding：一个对象，包含以下 property<br>    name：指令名，不包括 v- 前缀<br>    value：指令绑定的值，例如：v-my-directive=”1 + 1” 中，绑定值为 2<br>    oldValue：指定绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用<br>    expression：字符串形式的指定表达式，例如 v-my-directive=”1 + 1” 中，表达式为 “1 + 1”<br>    arg：传给指令的参数，例如 v-my-directive:foo 中，参数为 “foo”<br>    modifers：一个包含修饰符的对象，如：v-my-directive.foo.bar 中，修饰符对象为 { foo: true, bar: true }<br>vnode：Vue 编译生成的虚拟节点<br>oldVnode：上一个虚拟节点，仅在 update 和 componentUpdated 钩子中可用</p>
+<p>一个例子</p>
+<pre><code>&lt;div id=&quot;hook-arguments-example&quot; v-demo:foo.a.b=&quot;message&quot;&gt;&lt;/div&gt;
+
+Vue.directive(&#39;demo&#39;, &#123;
+  bind: function (el, binding, vnode) &#123;
+    var s = JSON.stringify
+    el.innerHTML =
+      &#39;name: &#39;       + s(binding.name) + &#39;&lt;br&gt;&#39; +   //demo
+      &#39;value: &#39;      + s(binding.value) + &#39;&lt;br&gt;&#39; +  // hello
+      &#39;expression: &#39; + s(binding.expression) + &#39;&lt;br&gt;&#39; + // message
+      &#39;argument: &#39;   + s(binding.arg) + &#39;&lt;br&gt;&#39; +    //foo
+      &#39;modifiers: &#39;  + s(binding.modifiers) + &#39;&lt;br&gt;&#39; +  //&#123;&quot;a&quot;: true, &quot;b&quot;: true&#125;
+      &#39;vnode keys: &#39; + Object.keys(vnode).join(&#39;, &#39;)
+  &#125;
+&#125;)
+
+new Vue(&#123;
+  el: &#39;#hook-arguments-example&#39;,
+  data: &#123;
+    message: &#39;hello!&#39;
+  &#125;
+&#125;)
+</code></pre>
+<h5 id="20-Render-amp-JSX"><a href="#20-Render-amp-JSX" class="headerlink" title="20. Render &amp; JSX"></a>20. Render &amp; JSX</h5><p>Vue 推荐在绝大多数情况下使用模板来创建你的 HTML。然而在一些场景中，你真的需要 JavaScript 的完全编程的能力。这时你可以用渲染函数，它比模板更接近编译器</p>
+<pre><code>Vue.component(&#39;anchored-heading&#39;, &#123;
+  render: function (createElement) &#123;
+    return createElement(
+      &#39;h&#39; + this.level,   // 标签名称
+      this.$slots.default // 子节点数组
+    )
+  &#125;,
+  props: &#123;
+    level: &#123;
+      type: Number,
+      required: true
+    &#125;
+  &#125;
+&#125;)
+</code></pre>
+<ul>
+<li>节点、树以及虚拟 DOM</li>
+</ul>
+<pre><code>&lt;h1&gt;&#123;&#123; blogTitle &#125;&#125;&lt;/h1&gt;
+
+渲染函数
+
+render: function (createElement) &#123;
+  return createElement(&#39;h1&#39;, this.blogTitle)
+&#125;
+</code></pre>
+<ul>
+<li>createElement 参数</li>
+</ul>
+<pre><code>// @returns &#123;VNode&#125;
+createElement(
+  // &#123;String | Object | Function&#125;
+  // 一个 HTML 标签名、组件选项对象，或者
+  // resolve 了上述任何一种的一个 async 函数。必填项。
+  &#39;div&#39;,
+
+  // &#123;Object&#125;
+  // 一个与模板中 attribute 对应的数据对象。可选。
+  &#123;
+    // (详情见下一节)
+  &#125;,
+
+  // &#123;String | Array&#125;
+  // 子级虚拟节点 (VNodes)，由 `createElement()` 构建而成，
+  // 也可以使用字符串来生成“文本虚拟节点”。可选。
+  [
+    &#39;先写一些文字&#39;,
+    createElement(&#39;h1&#39;, &#39;一则头条&#39;),
+    createElement(MyComponent, &#123;
+      props: &#123;
+        someProp: &#39;foobar&#39;
+      &#125;
+    &#125;)
+  ]
+)
+</code></pre>
+<h5 id="21-插件"><a href="#21-插件" class="headerlink" title="21. 插件"></a>21. 插件</h5><p>（1）插件是什么？<br>    插件通常用来为 Vue 添加全局功能<br>（2）怎么用？<br>    通过全局方法 Vue.use() 使用插件，它需要在你调用 new Vue() 启动应用之前完成</p>
+<pre><code>// 调用 `MyPlugin.install(Vue)`
+Vue.use(MyPlugin)
+
+new Vue(&#123;
+  // ...组件选项
+&#125;)
+</code></pre>
+<p>（3）开发插件<br>Vue.js 的插件应该暴露一个 install 方法。这个方法的第一个参数是 Vue 构造器，第二个参数是一个可选的选项对象：</p>
+<pre><code>MyPlugin.install = function (Vue, options) &#123;
+  // 1. 添加全局方法或 property
+  Vue.myGlobalMethod = function () &#123;
+    // 逻辑...
+  &#125;
+
+  // 2. 添加全局资源
+  Vue.directive(&#39;my-directive&#39;, &#123;
+    bind (el, binding, vnode, oldVnode) &#123;
+      // 逻辑...
+    &#125;
+    ...
+  &#125;)
+
+  // 3. 注入组件选项
+  Vue.mixin(&#123;
+    created: function () &#123;
+      // 逻辑...
+    &#125;
+    ...
+  &#125;)
+
+  // 4. 添加实例方法
+  Vue.prototype.$myMethod = function (methodOptions) &#123;
+    // 逻辑...
+  &#125;
+&#125;
+</code></pre>
+<h5 id="22-过滤器"><a href="#22-过滤器" class="headerlink" title="22. 过滤器"></a>22. 过滤器</h5><p>Vue.js 允许你自定义过滤器，可被用于一些常见的文本格式化</p>
+<pre><code>&lt;!-- 在双花括号中 --&gt;
+&#123;&#123; message | capitalize&#125;&#125;
+
+&lt;!-- 在 `v-bind` 中 --&gt;
+&lt;div v-bind:id=&quot;rawId | formatId&quot;&gt;&lt;/div&gt;
+
+filters: &#123;
+    capitalize: function (value) &#123;
+        if (!value) &#123;
+            value = value.toString()
+            return value.chartAt(0).toUpperCase() + value.slice(1)
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>全局注册过滤器<br>Vue.filter(‘capitalize’, function (value) {<br>    if (!value) {<br>        value = value.toString()<br>        return value.chartAt(0).toUpperCase() + value.slice(1)<br>    }<br>})</p>
+<h5 id="23-响应式原理"><a href="#23-响应式原理" class="headerlink" title="23. 响应式原理"></a>23. 响应式原理</h5><p><img src="/2021/10/31/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8vue/vue.png" alt="vue"><br>每个组件实例都对应一个 watcher 实例，它会在组件渲染的过程中把“接触”过的数据 property 记录为依赖。之后当依赖项的 setter 触发时，会通知 watcher，从而使它关联的组件重新渲染</p>
+<h5 id="24-测试"><a href="#24-测试" class="headerlink" title="24. 测试"></a>24. 测试</h5><p>（1）官方推荐测试框架Vue Testing Library (@testing-library/vue)</p>
+<p>（2）安装</p>
+<pre><code>npm install --save-dev jest @vue/test-utils
+</code></pre>
+<p>（3）添加脚本</p>
+<pre><code>// package.json
+&#123;
+  &quot;scripts&quot;: &#123;
+    &quot;test&quot;: &quot;jest&quot;
+  &#125;
+&#125;
+</code></pre>
+<h5 id="25-Vue-API"><a href="#25-Vue-API" class="headerlink" title="25. Vue API"></a>25. Vue API</h5><ul>
+<li>实例<br>（1）vm.$data<br>（2）vm.$props<br>（3）vm.$el<br>  Vue 实例使用的根 DOM 元素<br>（3）vm.$options<br>  用于当前 Vue 实例的初始化选项</li>
+</ul>
+<pre><code>new Vue(&#123;
+  customOption: &#39;foo&#39;,
+  created: function () &#123;
+    console.log(this.$options.customOption) // =&gt; &#39;foo&#39;
+  &#125;
+&#125;)
+</code></pre>
+<p>（4）vm.$parent<br>    父实例，如果当前实例有的话<br>（5）vm.$root<br>    当前组件树的根 Vue 实例。如果当前实例没有父实例，此实例将会是其自己<br>（6）$children<br>    当前实例的直接子组件<br>（7）vm.$slots<br>    用来访问被插槽分发的内容</p>
+<pre><code>```
+&lt;blog-post&gt;
+    &lt;template v-slot:header&gt;
+        &lt;h1&gt;About Me&lt;/h1&gt;
+    &lt;/template&gt;
+
+    &lt;p&gt;Here&#39;s some page content, which will be included in vm.$slots.default,   because it&#39;s not inside a named slot.
+    &lt;/p&gt;
+
+    &lt;template v-slot:footer&gt;
+        &lt;p&gt;Copyright 2016 Evan You&lt;/p&gt;
+    &lt;/template&gt;
+
+    &lt;p&gt;If I have some content down here, it will also be included in            vm.$slots.default.
+    &lt;/p&gt;
+&lt;/blog-post&gt;
+```
+
+```
+Vue.component(&#39;blog-post&#39;, &#123;
+    render: function (createElement) &#123;
+        var header = this.$slots.header
+        var body   = this.$slots.default
+        var footer = this.$slots.footer
+        return createElement(&#39;div&#39;, [
+        createElement(&#39;header&#39;, header),
+        createElement(&#39;main&#39;, body),
+        createElement(&#39;footer&#39;, footer)
+        ])
+    &#125;
+ &#125;)
+```
+</code></pre>
+<p>（8）vm.$scopedSlots<br>    用来访问作用域插槽。对于包括 默认 slot 在内的每一个插槽，该对象都包含一个返回相应 VNode 的函数。<br>（9）vm.$refs<br>    一个对象，持有注册过 ref attribute 的所有 DOM 元素和组件实例<br>（10）vm.$isServer<br>    当前 Vue 实例是否运行于服务器<br>（11）vm.$attrs<br>    包含了父作用域中不作为 prop 被识别 (且获取) 的 attribute 绑定 (class 和 style 除外)。当一个组件没有声明任何 prop 时，这里会包含所有父作用域的绑定 (class 和 style 除外)，并且可以通过 v-bind=”$attrs” 传入内部组件——在创建高级别的组件时非常有用<br>（12）vm.$listeners<br>    包含了父作用域中的 (不含 .native 修饰器的) v-on 事件监听器。它可以通过 v-on=”$listeners” 传入内部组件——在创建更高层次的组件时非常有用</p>
+<ul>
+<li><p>实例方法<br>（1）vm.$watch( expOrFn, callback, [options] )<br>  观察 Vue 实例上的一个表达式或者一个函数计算结果的变化。回调函数得到的参数为新值和旧值。表达式只接受简单的键路径。对于更复杂的表达式，用一个函数取代</p>
+<pre><code>    // 键路径
+    vm.$watch(&#39;a.b.c&#39;, function (newVal, oldVal) &#123;
+    // 做点什么
+    &#125;)
+
+    // 函数
+    vm.$watch(
+    function () &#123;
+        // 表达式 `this.a + this.b` 每次得出一个不同的结果时
+        // 处理函数都会被调用。
+        // 这就像监听一个未被定义的计算属性
+        return this.a + this.b
+    &#125;,
+    function (newVal, oldVal) &#123;
+        // 做点什么
+    &#125;
+    )
+</code></pre>
+<p>  vm.$watch 返回一个取消观察函数，用来停止触发回调：</p>
+<pre><code>var unwatch = vm.$watch(&#39;a&#39;, cb)
+// 之后取消观察
+unwatch()
+</code></pre>
+<p>  选项：deep</p>
+<pre><code>  为了发现对象内部值的变化，可以在选项参数中指定 deep: true。注意监听数组的变更不需要这么做。
+</code></pre>
+<pre><code>    vm.$watch(&#39;someObject&#39;, callback, &#123;
+        deep: true
+    &#125;)
+    vm.someObject.nestedValue = 123
+    // callback is fired
+</code></pre>
+</li>
+</ul>
+<pre><code>选项：immediate
+    在选项参数中指定 immediate: true 将立即以表达式的当前值触发回调：
+
+```
+    vm.$watch(&#39;a&#39;, callback, &#123;
+        immediate: true
+    &#125;)
+    // 立即以 `a` 的当前值触发回调
+```
+</code></pre>
+<p>（2）vm.$set( target, propertyName/index, value )<br>    这是全局 Vue.set 的别名</p>
+<p>（3）vm.$delete( target, propertyName/index )<br>    这是全局 Vue.delete 的别名</p>
+<p>（4）vm.$on( event, callback )<br>    监听当前实例上的自定义事件。事件可以由 vm.$emit 触发。回调函数会接收所有传入事件触发函数的额外参数</p>
+<pre><code>```
+vm.$on(&#39;test&#39;, function (msg) &#123;
+    console.log(msg)
+&#125;)
+vm.$emit(&#39;test&#39;, &#39;hi&#39;)
+// =&gt; &quot;hi&quot;
+```
+</code></pre>
+<p>（5）$once<br>    监听一个自定义事件，但是只触发一次。一旦触发之后，监听器就会被移除<br>（6）vm.$off( [event, callback] )<br>    移除自定义事件监听器<br>    - 如果没有提供参数，则移除所有的事件监听器；</p>
+<pre><code>- 如果只提供了事件，则移除该事件所有的监听器；
+
+- 如果同时提供了事件与回调，则只移除这个回调的监听器。
+</code></pre>
+<p>（7）vm.$emit( eventName, […args] )<br>    触发当前实例上的事件。附加参数都会传给监听器回调<br>    <code>    Vue.component(&#39;welcome-button&#39;, &#123;         template: `             &lt;button v-on:click=&quot;$emit(&#39;welcome&#39;)&quot;&gt;                 Click me to be welcomed             &lt;/button&gt;`     &#125;)    </code></p>
+<pre><code>```
+&lt;div id=&quot;emit-example-simple&quot;&gt;
+    &lt;welcome-button @welcome=&quot;sayHi&quot;&gt;&lt;/welcome-button&gt;
+&lt;/div&gt;
+```
+
+```
+new Vue(&#123;
+    el: &#39;#emit-example-simple&#39;,
+    methods: &#123;
+        sayHi: function () &#123;
+        alert(&#39;Hi!&#39;)
+        &#125;
+    &#125;
+&#125;)
+```
+</code></pre>
+<p>（8）vm.$mount( [elementOrSelector] )<br>    如果 Vue 实例在实例化时没有收到 el 选项，则它处于“未挂载”状态，没有关联的 DOM 元素可以使用 vm.$mount() 手动地挂载一个未挂载的实例</p>
+<p>（9）vm.$nextTick( [callback] )<br>    将回调延迟到下次 DOM 更新循环之后执行。在修改数据之后立即使用它，然后等待 DOM 更新。它跟全局方法 Vue.nextTick 一样，不同的是回调的 this 自动绑定到调用它的实例上</p>
+<p>（10）vm.$destroy()<br>     完全销毁一个实例。清理它与其它实例的连接，解绑它的全部指令及事件监听器  </p>
+<p>（11）vm.$forceUpdate()<br>    迫使 Vue 实例重新渲染。注意它仅仅影响实例本身和插入插槽内容的子组件，而不是所有子组件</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/31/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8vue/" data-id="ckxedwl5b0003w5183tmz5v70" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-react-hooks" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/10/30/react-hooks/" class="article-date">
+  <time datetime="2021-10-30T03:19:40.000Z" itemprop="datePublished">2021-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/30/react-hooks/">react-hooks</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>useState</p>
+</li>
+<li><p>useEffect</p>
+</li>
+<li><p>useContext</p>
+</li>
+<li><p>useRef</p>
+</li>
+<li><p>useReducer</p>
+</li>
+<li><p>useCallback</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/30/react-hooks/" data-id="ckwou9u5y000i9hwn36ikdm0g" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端综合面试题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/10/29/%E5%89%8D%E7%AB%AF%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E9%A2%98/" class="article-date">
+  <time datetime="2021-10-29T08:14:14.000Z" itemprop="datePublished">2021-10-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/29/%E5%89%8D%E7%AB%AF%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E9%A2%98/">前端综合面试题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h5 id="1-从输入URL地址到页面渲染的过程？">
+          <a href="#1-从输入URL地址到页面渲染的过程？" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-从输入URL地址到页面渲染的过程？" class="headerlink" title="1. 从输入URL地址到页面渲染的过程？"></a>1. 从输入URL地址到页面渲染的过程？</h5>
+      <p>（1）DNS域名解析<br>（2）根据IP向服务器发请求<br>（3）服务器处理http请求，返回结果<br>（4）根据HTML生成DOM Tree<br>（5）根据CSS生成CSS DOM<br>（6）DOM Tree和CSS DOM整合成Render Tree<br>（7）根据Render Tree渲染页面</p>
+
+        <h5 id="2-什么是重绘与回流？">
+          <a href="#2-什么是重绘与回流？" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-什么是重绘与回流？" class="headerlink" title="2. 什么是重绘与回流？"></a>2. 什么是重绘与回流？</h5>
+      
+        <h5 id="3-浏览器缓存？">
+          <a href="#3-浏览器缓存？" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-浏览器缓存？" class="headerlink" title="3. 浏览器缓存？"></a>3. 浏览器缓存？</h5>
+      <p>（1）协商缓存</p>
+<p>（2）强制缓存</p>
+
+        <h5 id="4-同源策略是什么？">
+          <a href="#4-同源策略是什么？" class="heading-link"><i class="fas fa-link"></i></a><a href="#4-同源策略是什么？" class="headerlink" title="4. 同源策略是什么？"></a>4. 同源策略是什么？</h5>
+      <p>协议、域名、端口三者相同</p>
+
+        <h5 id="5-举例几种跨越的方法？">
+          <a href="#5-举例几种跨越的方法？" class="heading-link"><i class="fas fa-link"></i></a><a href="#5-举例几种跨越的方法？" class="headerlink" title="5. 举例几种跨越的方法？"></a>5. 举例几种跨越的方法？</h5>
+      <p>（1）jsonp<br>（2）cors</p>
+
+        <h5 id="6-优化网页的几个方向？">
+          <a href="#6-优化网页的几个方向？" class="heading-link"><i class="fas fa-link"></i></a><a href="#6-优化网页的几个方向？" class="headerlink" title="6. 优化网页的几个方向？"></a>6. 优化网页的几个方向？</h5>
+      <p>（1）减少网络请求<br>    - 合并文件<br>    - 使用本地缓存<br>（2）减小资源体积<br>    - html、css、js、图片压缩<br>    - 开启gzip<br>（3）使用CDN<br>（4）预加载<br>（5）懒加载</p>
+
+        <h5 id="7-谈一谈XSS攻击">
+          <a href="#7-谈一谈XSS攻击" class="heading-link"><i class="fas fa-link"></i></a><a href="#7-谈一谈XSS攻击" class="headerlink" title="7. 谈一谈XSS攻击"></a>7. 谈一谈XSS攻击</h5>
+      <p>（1）什么时XSS<br>XSS 即（Cross Site Scripting）中文名称为：跨站脚本攻击</p>
+<p>（2）原理<br>恶意攻击者在web页面中会插入一些恶意的script代码。当用户浏览该页面的时候，那么嵌入到web页面中script代码会执行，因此会达到恶意攻击用户的目的</p>
+<p>（3）XSS分类</p>
+<ul>
+<li><p>反射型XSS<br>反射性xss一般指攻击者通过特定的方式来诱惑受害者去访问一个包含恶意代码的URL。当受害者点击恶意链接url的时候，恶意代码会直接在受害者的主机上的浏览器执行</p>
+</li>
+<li><p>存储型XSS<br>主要是将恶意代码上传或存储到服务器中，下次只要受害者浏览包含此恶意代码的页面就会执行恶意代码</p>
+</li>
+<li><p>DOM-based型XSS</p>
+</li>
+</ul>
+
+        <h5 id="8-谈一谈CSRF攻击">
+          <a href="#8-谈一谈CSRF攻击" class="heading-link"><i class="fas fa-link"></i></a><a href="#8-谈一谈CSRF攻击" class="headerlink" title="8. 谈一谈CSRF攻击"></a>8. 谈一谈CSRF攻击</h5>
+      <p>（1）什么是CSRF?<br>CSRF（Cross-site request forgery），中文名称：跨站请求伪造</p>
+<p>（2）CSRF危害？<br>你这可以这么理解CSRF攻击：攻击者盗用了你的身份，以你的名义发送恶意请求。CSRF能够做的事情包括：以你名义发送邮件，发消息，盗取你的账号，甚至于购买商品，虚拟货币转账……造成的问题包括：个人隐私泄露以及财产安全</p>
+<p>（3）原理<br><img src="/2021/10/29/%E5%89%8D%E7%AB%AF%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E9%A2%98/csrf.jpeg" alt="csrf原理"><br>要完成一次CSRF攻击，受害者必须完成两个步骤：</p>
+<ul>
+<li>登录受信任网站A，并在本地生成Cookie</li>
+<li>在不登出A的情况下，访问危险网站B</li>
+</ul>
+<p>（4）防御</p>
+<ul>
+<li>Cookie Hashing(所有表单都包含同一个伪随机值)</li>
+<li>验证码</li>
+<li>One-Time Tokens(不同的表单包含一个不同的伪随机值)</li>
+<li></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/29/%E5%89%8D%E7%AB%AF%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E9%A2%98/" data-id="ckwou9u67000t9hwn0lwbbhk9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-大屏数据可视化项目开发" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/10/29/%E5%A4%A7%E5%B1%8F%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" class="article-date">
+  <time datetime="2021-10-29T06:50:13.000Z" itemprop="datePublished">2021-10-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/29/%E5%A4%A7%E5%B1%8F%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/">大屏数据可视化项目开发</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h5 id="1-创建项目">
+          <a href="#1-创建项目" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-创建项目" class="headerlink" title="1. 创建项目"></a>1. 创建项目</h5>
+      <pre><code>vue create datav
+</code></pre>
+
+        <h4 id="2-安装依赖">
+          <a href="#2-安装依赖" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-安装依赖" class="headerlink" title="2. 安装依赖"></a>2. 安装依赖</h4>
+      <pre><code>npm install echarts
+</code></pre>
+
+        <h5 id="3-页面拆分">
+          <a href="#3-页面拆分" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-页面拆分" class="headerlink" title="3. 页面拆分"></a>3. 页面拆分</h5>
+      <p>（1）热销商品（基于饼图封装）<br>（2）客户分布（基于地图封装）<br>（3）销售数据（基于柱图封装）<br>（4）库存分析（基于饼图封装）<br>（5）销售走势（基于折线图封装）<br>（6）商家统计（基于柱图封装）</p>
+
+        <h5 id="4-热销商品组件开发">
+          <a href="#4-热销商品组件开发" class="heading-link"><i class="fas fa-link"></i></a><a href="#4-热销商品组件开发" class="headerlink" title="4. 热销商品组件开发"></a>4. 热销商品组件开发</h5>
+      <pre><code>&lt;template&gt;
+    &lt;div class=&quot;c-container&quot;&gt;
+        &lt;div ref=&quot;hot_ref&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default &#123;
+    data () &#123;
+        return &#123;
+            initOption: &#123;
+                title: &#123;
+                    text: &#39;热销商品销售统计&#39;,
+                    top: 20,
+                    left: 20
+                &#125;,
+                legend: &#123;
+                    top: &#39;20%&#39;,
+                    icon: &#39;circle&#39;
+                &#125;,
+                tooltip: &#123;
+                    show: true
+                &#125;,
+                series: [
+                    &#123;
+                        type: &#39;pie&#39;,
+                        label: &#123;
+                            show: false
+                        &#125;
+                    &#125;
+                ]
+            &#125;,
+            timer,
+            chartInstance: null,
+            currentIndex: 0
+        &#125;
+    &#125;,
+    methods: &#123;
+        // 初始化
+        initChart () &#123;
+            this.chartInstance = this.$echarts.init(this.$refs.hot_ref, &#39;chalk&#39;)
+        &#125;,
+        // 动态展示数据
+        updateChart () &#123;
+            this.chartInstance.setOption(updateOption)
+        &#125;,
+        // 自适应窗口改变
+        updateScreen () &#123;
+            const titleFontSize = this.$refs.hot_ref.offsetWidth / 100 * 3.6
+            const screenOption = &#123;
+                title: &#123;
+                    textStyle: &#123;
+                        textStyle: &#123;
+                            fontSize: titleFontSize / 1.5
+                        &#125;
+                    &#125;
+                &#125;
+            &#125;
+        &#125;,
+        startInterval () &#123;
+            if (this.timer) &#123;
+                clearInterval(this.timer)
+            &#125;
+            this.timer = setInterval(() =&gt; &#123;
+                this.currentIndex++
+                if (this.currentIndex &gt; this.allData.length - 1) &#123;
+                    this.currentIndex = 0
+                &#125;
+                this.updateChart()
+            &#125;, 2000)
+        &#125;
+    &#125;
+&#125;
+&lt;/script&gt;
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/29/%E5%A4%A7%E5%B1%8F%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" data-id="ckwou9u69000v9hwneq0j19ct" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-http介绍" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/10/29/http%E4%BB%8B%E7%BB%8D/" class="article-date">
+  <time datetime="2021-10-29T06:48:44.000Z" itemprop="datePublished">2021-10-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/29/http%E4%BB%8B%E7%BB%8D/">http介绍</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h5 id="1-简介">
+          <a href="#1-简介" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h5>
+      <p>HTTP协议是Hyper Text Transfer Protocol（超文本传输协议）的缩写,是用于从万维网（WWW:World Wide Web ）服务器传输超文本到本地浏览器的传送协议，HTTP是一个基于TCP/IP通信协议来传递数据</p>
+
+        <h5 id="2-HTTP工作原理">
+          <a href="#2-HTTP工作原理" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-HTTP工作原理" class="headerlink" title="2.HTTP工作原理"></a>2.HTTP工作原理</h5>
+      <ul>
+<li>HTTP协议工作于客户端-服务端架构上</li>
+<li>Web服务器根据接收到的请求后，向客户端发送响应信息</li>
+<li>HTTP默认端口号为80</li>
+</ul>
+
+        <h5 id="3-HTTP三个特点">
+          <a href="#3-HTTP三个特点" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-HTTP三个特点" class="headerlink" title="3.HTTP三个特点"></a>3.HTTP三个特点</h5>
+      <ul>
+<li>HTTP是无连接，无连接的含义是限制每次连接只处理一个请求</li>
+<li>HTTP是媒体独立的，只要客户端和服务器知道如何处理的数据内容，任何类型的数据都可以通过HTTP发送</li>
+<li>HTTP是无状态，无状态是指协议对于事务处理没有记忆能力</li>
+</ul>
+
+        <h5 id="4-请求消息">
+          <a href="#4-请求消息" class="heading-link"><i class="fas fa-link"></i></a><a href="#4-请求消息" class="headerlink" title="4.请求消息"></a>4.请求消息</h5>
+      <ul>
+<li>请求行（request line）</li>
+<li>请求头部（header）</li>
+<li>空行</li>
+<li>请求数据</li>
+</ul>
+
+        <h5 id="5-响应消息">
+          <a href="#5-响应消息" class="heading-link"><i class="fas fa-link"></i></a><a href="#5-响应消息" class="headerlink" title="5.响应消息"></a>5.响应消息</h5>
+      <ul>
+<li>状态行</li>
+<li>消息报头</li>
+<li>空行</li>
+<li>响应正文<br><img src="httpmessage.jpeg" alt="响应消息结构"></li>
+</ul>
+
+        <h5 id="6-请求方法">
+          <a href="#6-请求方法" class="heading-link"><i class="fas fa-link"></i></a><a href="#6-请求方法" class="headerlink" title="6.请求方法"></a>6.请求方法</h5>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>请求指定的页面信息，并返回实体主体。</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td>类似于 GET 请求，只不过返回的响应中没有具体的内容，用于获取报头</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>向指定资源提交数据进行处理请求（例如提交表单或者上传文件）</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>从客户端向服务器传送的数据取代指定的文档的内容。</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>请求服务器删除指定的页面。</td>
+</tr>
+<tr>
+<td>CONNECT</td>
+<td>HTTP/1.1 协议中预留给能够将连接改为管道方式的代理服务器。</td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td>允许客户端查看服务器的性能。</td>
+</tr>
+<tr>
+<td>TRACE</td>
+<td>回显服务器收到的请求，主要用于测试或诊断。</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>是对 PUT 方法的补充，用来对已知资源进行局部更新 。</td>
+</tr>
+</tbody></table></div>
+
+        <h5 id="7-响应头信息">
+          <a href="#7-响应头信息" class="heading-link"><i class="fas fa-link"></i></a><a href="#7-响应头信息" class="headerlink" title="7.响应头信息"></a>7.响应头信息</h5>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th>应答头</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Allow</td>
+<td>服务器支持哪些请求方法（如GET、POST等）</td>
+</tr>
+<tr>
+<td>Content-Encoding</td>
+<td>文档的编码（Encode）方法</td>
+</tr>
+<tr>
+<td>Content-Length</td>
+<td>表示内容长度</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>表示后面的文档属于什么MIME类型</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>当前的GMT时间</td>
+</tr>
+<tr>
+<td>Expires</td>
+<td>应该在什么时候认为文档已经过期，从而不再缓存它？</td>
+</tr>
+<tr>
+<td>Last-Modified</td>
+<td>文档的最后改动时间。</td>
+</tr>
+<tr>
+<td>Location</td>
+<td>表示客户应当到哪里去提取文档</td>
+</tr>
+<tr>
+<td>Refresh</td>
+<td>表示浏览器应该在多少时间之后刷新文档</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>服务器名字</td>
+</tr>
+<tr>
+<td>Set-Cookie</td>
+<td>设置和页面关联的Cookie</td>
+</tr>
+</tbody></table></div>
+
+        <h5 id="8-状态码">
+          <a href="#8-状态码" class="heading-link"><i class="fas fa-link"></i></a><a href="#8-状态码" class="headerlink" title="8.状态码"></a>8.状态码</h5>
+      <ul>
+<li>200   请求成功</li>
+<li>300   资源（网页等）被永久转移到其它URL</li>
+<li>400   请求的资源（网页等）不存在</li>
+<li>500    内部服务器错误</li>
+</ul>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>100</td>
+<td>继续</td>
+</tr>
+<tr>
+<td>101</td>
+<td>切换协议</td>
+</tr>
+<tr>
+<td>200</td>
+<td>请求成功。一般用于GET与POST请求</td>
+</tr>
+<tr>
+<td>201</td>
+<td>已创建。成功请求并创建了新的资源</td>
+</tr>
+<tr>
+<td>202</td>
+<td>已接受。已经接受请求，但未处理完成</td>
+</tr>
+<tr>
+<td>203</td>
+<td>非授权信息。请求成功。但返回的meta信息不在原始的服务器，而是一个副本</td>
+</tr>
+<tr>
+<td>204</td>
+<td>无内容。服务器成功处理，但未返回内容。在未更新网页的情况下，可确保浏览器继续显示当前文档</td>
+</tr>
+<tr>
+<td>300</td>
+<td>多种选择。请求的资源可包括多个位置，相应可返回一个资源特征与地址的列表用于用户终端（例如：浏览器）选择</td>
+</tr>
+<tr>
+<td>301</td>
+<td>永久移动。请求的资源已被永久的移动到新URI，返回信息会包括新的URI，浏览器会自动定向到新URI。今后任何新的请求都应使用新的URI代替</td>
+</tr>
+<tr>
+<td>302</td>
+<td>时移动。与301类似。但资源只是临时被移动。客户端应继续使用原有URI</td>
+</tr>
+<tr>
+<td>400</td>
+<td>客户端请求的语法错误，服务器无法理解</td>
+</tr>
+<tr>
+<td>401</td>
+<td>请求要求用户的身份认证</td>
+</tr>
+<tr>
+<td>402</td>
+<td>保留，将来使用</td>
+</tr>
+<tr>
+<td>403</td>
+<td>服务器理解请求客户端的请求，但是拒绝执行此请求</td>
+</tr>
+<tr>
+<td>500</td>
+<td>服务器内部错误，无法完成请求</td>
+</tr>
+<tr>
+<td>501</td>
+<td>服务器不支持请求的功能，无法完成请求</td>
+</tr>
+<tr>
+<td>502</td>
+<td>作为网关或者代理工作的服务器尝试执行请求时，从远程服务器接收到了一个无效的响应</td>
+</tr>
+</tbody></table></div>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/29/http%E4%BB%8B%E7%BB%8D/" data-id="ckwou9u5o000b9hwn6te2f186" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-flex使用介绍" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/" class="article-date">
+  <time datetime="2021-10-29T06:30:23.000Z" itemprop="datePublished">2021-10-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/">flex使用介绍</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h5 id="1-Flex布局是什么？">
+          <a href="#1-Flex布局是什么？" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-Flex布局是什么？" class="headerlink" title="1. Flex布局是什么？"></a>1. Flex布局是什么？</h5>
+      <p>Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性</p>
+
+        <h5 id="2-基本概念">
+          <a href="#2-基本概念" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-基本概念" class="headerlink" title="2. 基本概念"></a>2. 基本概念</h5>
+      <p>采用 Flex 布局的元素，称为 Flex 容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称”项目”<br><img src="/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/flex_1.png" alt="flex"><br>水平的主轴（main axis）<br>垂直的交叉轴（cross axis<br>主轴的开始位置  main start<br>结束位置    main end<br>交叉轴的开始位置    cross start<br>个项目占据的主轴空间    main size<br>占据的交叉轴空间    cross size</p>
+
+        <h5 id="3-容器的属性">
+          <a href="#3-容器的属性" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-容器的属性" class="headerlink" title="3.容器的属性"></a>3.容器的属性</h5>
+      <ul>
+<li>flex-direction</li>
+<li>flex-wrap</li>
+<li>flex-flow</li>
+<li>justify-content</li>
+<li>align-items</li>
+<li>align-content</li>
+</ul>
+<p>（1）flex-direction<br>flex-direction属性决定主轴的方向（即项目的排列方向）</p>
+<pre><code>.box &#123;
+  flex-direction: row | row-reverse | column | column-reverse;
+&#125;
+</code></pre>
+<ul>
+<li>row（默认值）：主轴为水平方向，起点在左端。</li>
+<li>row-reverse：主轴为水平方向，起点在右端。</li>
+<li>column：主轴为垂直方向，起点在上沿。</li>
+<li>column-reverse：主轴为垂直方向，起点在下沿。<br><img src="/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/flex_2.png" alt="flex"></li>
+</ul>
+<p>（2）flex-wrap属性<br>默认情况下，项目都排在一条线（又称”轴线”）上。flex-wrap属性定义，如果一条轴线排不下，如何换行</p>
+<pre><code>.box&#123;
+  flex-wrap: nowrap | wrap | wrap-reverse;
+&#125;
+</code></pre>
+<ul>
+<li>nowrap（默认）：不换行</li>
+<li>wrap：换行，第一行在上方</li>
+<li>wrap-reverse：换行，第一行在下方</li>
+</ul>
+<p>（3）flex-flow<br>lex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap</p>
+<pre><code>.box &#123;
+  flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;
+&#125;
+</code></pre>
+<p>（4）justify-content属性<br>justify-content属性定义了项目在主轴上的对齐方式</p>
+<pre><code>.box &#123;
+  justify-content: flex-start | flex-end | center | space-between | space-around;
+&#125;
+</code></pre>
+<ul>
+<li>flex-start（默认值）：左对齐</li>
+<li>flex-end：右对齐</li>
+<li>center： 居中</li>
+<li>space-between：两端对齐，项目之间的间隔都相等。</li>
+<li>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。<br><img src="/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/flex_3.png" alt="flex"></li>
+</ul>
+<p>（5）align-items属性<br>align-items属性定义项目在交叉轴上如何对齐。</p>
+<pre><code>.box &#123;
+  align-items: flex-start | flex-end | center | baseline | stretch;
+&#125;
+</code></pre>
+<ul>
+<li>flex-start：交叉轴的起点对齐。</li>
+<li>flex-end：交叉轴的终点对齐。</li>
+<li>center：交叉轴的中点对齐。</li>
+<li>baseline: 项目的第一行文字的基线对齐。</li>
+<li>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。<br><img src="/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/flex_4.png" alt="flex"></li>
+</ul>
+<p>（6）align-content属性<br>align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用</p>
+<ul>
+<li>flex-start：与交叉轴的起点对齐。</li>
+<li>flex-end：与交叉轴的终点对齐。</li>
+<li>center：与交叉轴的中点对齐。</li>
+<li>space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。</li>
+<li>space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</li>
+<li>stretch（默认值）：轴线占满整个交叉轴。<br><img src="/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/flex_5.png" alt="flex"></li>
+</ul>
+
+        <h5 id="特别说明：">
+          <a href="#特别说明：" class="heading-link"><i class="fas fa-link"></i></a><a href="#特别说明：" class="headerlink" title="特别说明："></a>特别说明：</h5>
+      <p><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">本文转载自：Flex 布局教程</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/" data-id="ckwou9u5h00089hwnfku32rr6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-koa使用介绍" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/10/29/koa%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/" class="article-date">
+  <time datetime="2021-10-29T06:27:04.000Z" itemprop="datePublished">2021-10-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/29/koa%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/">koa使用介绍</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>koa简介<br>Koa 是一个新的 web 框架，通过利用 async 函数，Koa 帮你丢弃回调函数，并有力地增强错误处理</p>
+</li>
+<li><p>安装</p>
+</li>
+</ol>
+<pre><code>npm install koa
+</code></pre>
+<ol start="3">
+<li>Hello World</li>
+</ol>
+<pre><code>const Koa = require(&#39;koa&#39;)
+const app = new Koa()
+
+app.use(async ctx =&gt; &#123;
+    ctx.body = &#39;Hello World&#39;
+&#125;)
+
+app.listen(3000)
+</code></pre>
+<ol start="4">
+<li>Context（上下文）</li>
+</ol>
+<p>Koa Context将node的request和response对象封装到单个对象中，为编写Web应用程序和API提供了许多有用的方法</p>
+<pre><code>app.use(async ctx =&gt; &#123;
+    ctx // context
+    ctx.request // koa request
+    ctx.response    // koa response
+&#125;)
+</code></pre>
+<ol start="5">
+<li>Request</li>
+</ol>
+<p>request.header  请求头对象</p>
+<p>response.method 请求方法</p>
+<p>request.search  使用 ? 获取原始查询字符串</p>
+<p>request.host    存在时获取主机（hostname:port）</p>
+<p>request.hostname    存在时获取主机名</p>
+<p>request.URL 获取 WHATWG 解析的 URL 对象</p>
+<p>request.type    获取请求 Content-Type, 不含 “charset” 等参数</p>
+<p>request.charset     存在时获取请求字符集，或者 undefined：</p>
+<ol start="6">
+<li>Response</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/29/koa%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/" data-id="ckwou9u5s000f9hwndbt6frdh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/12/01/%E4%B8%89%E5%88%86%E9%92%9F%E4%BA%86%E8%A7%A3gitactions/">三分钟了解Github Actions</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">前端工程化最佳实践</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/31/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8react/">快速入门react</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/31/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8vue/">快速入门vue</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/30/react-hooks/">react-hooks</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Carr Lu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

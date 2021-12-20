@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>flex使用介绍 | Carr&#39;Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. Flex布局是什么？       Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性                     2. 基本概念       采用 Flex 布局的元素，称为 Flex 容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为 Flex 项目（fl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flex使用介绍">
+<meta property="og:url" content="http://example.com/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:site_name" content="Carr&#39;Blog">
+<meta property="og:description" content="1. Flex布局是什么？       Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性                     2. 基本概念       采用 Flex 布局的元素，称为 Flex 容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为 Flex 项目（fl">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/flex_1.png">
+<meta property="og:image" content="http://example.com/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/flex_2.png">
+<meta property="og:image" content="http://example.com/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/flex_3.png">
+<meta property="og:image" content="http://example.com/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/flex_4.png">
+<meta property="og:image" content="http://example.com/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/flex_5.png">
+<meta property="article:published_time" content="2021-10-29T06:30:23.000Z">
+<meta property="article:modified_time" content="2021-11-04T09:26:46.735Z">
+<meta property="article:author" content="Carr Lu">
+<meta property="article:tag" content="web前端 前端开发 html css js javascript vue react 小程序 node koa express mysql">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/flex_1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Carr&#39;Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Carr&#39;Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-flex使用介绍" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/" class="article-date">
+  <time datetime="2021-10-29T06:30:23.000Z" itemprop="datePublished">2021-10-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      flex使用介绍
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h5 id="1-Flex布局是什么？">
+          <a href="#1-Flex布局是什么？" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-Flex布局是什么？" class="headerlink" title="1. Flex布局是什么？"></a>1. Flex布局是什么？</h5>
+      <p>Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性</p>
+
+        <h5 id="2-基本概念">
+          <a href="#2-基本概念" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-基本概念" class="headerlink" title="2. 基本概念"></a>2. 基本概念</h5>
+      <p>采用 Flex 布局的元素，称为 Flex 容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称”项目”<br><img src="/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/flex_1.png" alt="flex"><br>水平的主轴（main axis）<br>垂直的交叉轴（cross axis<br>主轴的开始位置  main start<br>结束位置    main end<br>交叉轴的开始位置    cross start<br>个项目占据的主轴空间    main size<br>占据的交叉轴空间    cross size</p>
+
+        <h5 id="3-容器的属性">
+          <a href="#3-容器的属性" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-容器的属性" class="headerlink" title="3.容器的属性"></a>3.容器的属性</h5>
+      <ul>
+<li>flex-direction</li>
+<li>flex-wrap</li>
+<li>flex-flow</li>
+<li>justify-content</li>
+<li>align-items</li>
+<li>align-content</li>
+</ul>
+<p>（1）flex-direction<br>flex-direction属性决定主轴的方向（即项目的排列方向）</p>
+<pre><code>.box &#123;
+  flex-direction: row | row-reverse | column | column-reverse;
+&#125;
+</code></pre>
+<ul>
+<li>row（默认值）：主轴为水平方向，起点在左端。</li>
+<li>row-reverse：主轴为水平方向，起点在右端。</li>
+<li>column：主轴为垂直方向，起点在上沿。</li>
+<li>column-reverse：主轴为垂直方向，起点在下沿。<br><img src="/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/flex_2.png" alt="flex"></li>
+</ul>
+<p>（2）flex-wrap属性<br>默认情况下，项目都排在一条线（又称”轴线”）上。flex-wrap属性定义，如果一条轴线排不下，如何换行</p>
+<pre><code>.box&#123;
+  flex-wrap: nowrap | wrap | wrap-reverse;
+&#125;
+</code></pre>
+<ul>
+<li>nowrap（默认）：不换行</li>
+<li>wrap：换行，第一行在上方</li>
+<li>wrap-reverse：换行，第一行在下方</li>
+</ul>
+<p>（3）flex-flow<br>lex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap</p>
+<pre><code>.box &#123;
+  flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;
+&#125;
+</code></pre>
+<p>（4）justify-content属性<br>justify-content属性定义了项目在主轴上的对齐方式</p>
+<pre><code>.box &#123;
+  justify-content: flex-start | flex-end | center | space-between | space-around;
+&#125;
+</code></pre>
+<ul>
+<li>flex-start（默认值）：左对齐</li>
+<li>flex-end：右对齐</li>
+<li>center： 居中</li>
+<li>space-between：两端对齐，项目之间的间隔都相等。</li>
+<li>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。<br><img src="/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/flex_3.png" alt="flex"></li>
+</ul>
+<p>（5）align-items属性<br>align-items属性定义项目在交叉轴上如何对齐。</p>
+<pre><code>.box &#123;
+  align-items: flex-start | flex-end | center | baseline | stretch;
+&#125;
+</code></pre>
+<ul>
+<li>flex-start：交叉轴的起点对齐。</li>
+<li>flex-end：交叉轴的终点对齐。</li>
+<li>center：交叉轴的中点对齐。</li>
+<li>baseline: 项目的第一行文字的基线对齐。</li>
+<li>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。<br><img src="/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/flex_4.png" alt="flex"></li>
+</ul>
+<p>（6）align-content属性<br>align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用</p>
+<ul>
+<li>flex-start：与交叉轴的起点对齐。</li>
+<li>flex-end：与交叉轴的终点对齐。</li>
+<li>center：与交叉轴的中点对齐。</li>
+<li>space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。</li>
+<li>space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</li>
+<li>stretch（默认值）：轴线占满整个交叉轴。<br><img src="/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/flex_5.png" alt="flex"></li>
+</ul>
+
+        <h5 id="特别说明：">
+          <a href="#特别说明：" class="heading-link"><i class="fas fa-link"></i></a><a href="#特别说明：" class="headerlink" title="特别说明："></a>特别说明：</h5>
+      <p><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">本文转载自：Flex 布局教程</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/29/flex%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/" data-id="ckwou9u5h00089hwnfku32rr6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/10/29/http%E4%BB%8B%E7%BB%8D/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          http介绍
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/10/29/koa%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">koa使用介绍</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/12/01/%E4%B8%89%E5%88%86%E9%92%9F%E4%BA%86%E8%A7%A3gitactions/">三分钟了解Github Actions</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">前端工程化最佳实践</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/31/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8react/">快速入门react</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/31/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8vue/">快速入门vue</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/30/react-hooks/">react-hooks</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Carr Lu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
