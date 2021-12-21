@@ -6,9 +6,5 @@
 
 ##### 邮箱：carrlu@163.com
 
-##### github: 
-
-##### gitee:
-
 ##### 个人博客: https://www.carrlu.cn
 
