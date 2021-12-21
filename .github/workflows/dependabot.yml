@@ -27,7 +27,7 @@ jobs:
           ssh root@39.100.253.134 "
           cd /home/www/carrBlog
           git init
-          git remote add origin https://github.com/lzjdp/blog.git
+          git remote add origin git@github.com:lzjdp/blog.git
           git pull origin master
           git remote remove origin"
       - name: delete ssh key
